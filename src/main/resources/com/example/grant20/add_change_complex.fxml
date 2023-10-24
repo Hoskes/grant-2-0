@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="537.0" prefWidth="691.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="544.0" prefWidth="938.0">
+         <children>
+            <ChoiceBox fx:id="chooseStatus" layoutX="30.0" layoutY="109.0" prefHeight="26.0" prefWidth="318.0" />
+            <TextField fx:id="enterName" layoutX="30.0" layoutY="41.0" onAction="#enterName" prefHeight="26.0" prefWidth="318.0" />
+            <Label fx:id="numberLabel" layoutX="30.0" layoutY="14.0" text="Название комплекса" />
+            <Label fx:id="statusLabel" layoutX="30.0" layoutY="82.0" text="Статус" />
+            <TextField fx:id="enterAddedValue" layoutX="30.0" layoutY="173.0" onAction="#enterAddedValue" prefHeight="26.0" prefWidth="318.0" />
+            <Label fx:id="addedValueLabel" layoutX="30.0" layoutY="146.0" prefHeight="18.0" prefWidth="158.0" text="Добавочная стоимость" />
+            <TextField fx:id="enterBuildingCost" layoutX="30.0" layoutY="237.0" onAction="#enterBuildingCost" prefHeight="26.0" prefWidth="318.0" />
+            <Label fx:id="buildingCostLabel" layoutX="30.0" layoutY="210.0" prefHeight="18.0" prefWidth="178.0" text="Стоимость постройки" />
+            <Label fx:id="cityLabel" layoutX="30.0" layoutY="273.0" prefHeight="18.0" prefWidth="69.0" text="Город" />
+            <Button fx:id="saveChangesButton" layoutX="98.0" layoutY="422.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="26.0" prefWidth="157.0" text="Сохранить" />
+            <Button fx:id="goBackButton" layoutX="20.0" layoutY="462.0" mnemonicParsing="false" onAction="#goToComplexesPage" prefHeight="50.0" prefWidth="90.0" text="Назад" />
+            <TextField fx:id="enterCity" layoutX="29.0" layoutY="299.0" onAction="#enterCity" prefHeight="26.0" prefWidth="318.0" />
+            <Label fx:id="streetLabel" layoutX="31.0" layoutY="345.0" prefHeight="18.0" prefWidth="69.0" text="Улица" />
+            <TextField fx:id="enterStreet" layoutX="30.0" layoutY="371.0" onAction="#enterStreet" prefHeight="26.0" prefWidth="318.0" />
+            <TableView fx:id="housesInComplex" layoutX="407.0" layoutY="46.0" prefHeight="347.0" prefWidth="235.0">
+              <columns>
+                <TableColumn fx:id="idHouse" prefWidth="47.20001220703125" text="id" />
+                <TableColumn fx:id="number" prefWidth="181.5999755859375" text="Номер дома" />
+              </columns>
+            </TableView>
+            <Label fx:id="housesLabel" layoutX="407.0" layoutY="23.0" text="Дома в ЖК" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

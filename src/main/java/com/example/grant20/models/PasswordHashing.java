@@ -1,4 +1,4 @@
-package com.example.grant20;
+package com.example.grant20.models;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -24,5 +24,8 @@ public class PasswordHashing {
             e.printStackTrace();
             return null;
         }
+    }
+    public static void main(String[] args) {
+        System.out.println(PasswordHashing.hashPassword("Username1234!"));
     }
 }

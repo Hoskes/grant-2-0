@@ -1,27 +1,44 @@
 package com.example.grant20.models;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class User {
-    String first_name;
-    String last_name;
-    private int person_id;
-    public User(String login, String password){
-        if(true){
-            //fill strings
-        }else{
-            //deny_access
+    private String name;
+    private String mail;
+    private int roleId;
+    public User(String mail){
+        try {
+            PreparedStatement query = DBConnect.getDBConnect().getConnection().prepareStatement(Query.createUser);
+            query.setString(1,mail);
+            ResultSet result = query.executeQuery();
+            if(result.next()){
+                name = result.getString(1);
+                System.out.println(name);
+                mail = result.getString(2);
+                System.out.println(mail);
+                roleId = result.getInt(3);
+                System.out.println(roleId);
+            }else{
+                System.out.println("#");
+            }
+        } catch (SQLException e) {
+            System.out.println("User_Enter_Trouble");
+            throw new RuntimeException(e);
         }
 
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getMail() {
+        return mail;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getName() {
+        return name;
     }
 
-    public int getPerson_id() {
-        return person_id;
+    public int getRoleId() {
+        return roleId;
     }
 }
