@@ -1,10 +1,9 @@
 package com.example.grant20;
 
-import com.example.grant20.models.Apartment;
-import com.example.grant20.models.DBConnect;
-import com.example.grant20.models.Query;
+import com.example.grant20.models.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -17,60 +16,79 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ApartmentController {
-
+    User profile;
     @FXML
     private AnchorPane apart;
+    @FXML
+    private Button changeApartmentButton;
 
     @FXML
-    private Button changeApartment;
+    private Button createApartmentButton;
 
     @FXML
-    private Button createApartment;
+    private Button deleteApartmentButton;
 
     @FXML
-    private Button deleteApartment;
+    private ChoiceBox<?> filterComplex;
 
     @FXML
-    private ChoiceBox<?> filter1;
+    private ChoiceBox<?> filterEntrance;
 
     @FXML
-    private ChoiceBox<?> filter2;
+    private ChoiceBox<?> filterFloor;
 
     @FXML
-    private ChoiceBox<?> filter3;
+    private ChoiceBox<?> filterHouse;
 
     @FXML
-    private ChoiceBox<?> filter4;
+    private ChoiceBox<?> filterStatus;
 
     @FXML
-    private ChoiceBox<?> filter5;
+    private Button filterTableButton;
 
     @FXML
-    private Button filterButton;
+    private Button goBackButton;
 
     @FXML
-    private Button filterButton2;
+    private Button notClearSearchButton;
 
     @FXML
-    private TextField filterField;
+    private TextField notClearSearchField;
 
     @FXML
-    private TableColumn<?, ?> floor;
+    void changeApartment(ActionEvent event) {
+
+    }
 
     @FXML
-    private Button goBack;
+    void createApartment(ActionEvent event) {
+
+    }
 
     @FXML
-    private TableView<?> housesTable;
+    void deleteApartment(ActionEvent event) {
+
+    }
 
     @FXML
-    private TableColumn<?, ?> idApartment;
+    void filterTable(ActionEvent event) {
+
+    }
 
     @FXML
-    private TableColumn<?, ?> rooms;
+    void goToMainPage(ActionEvent event) {
+
+    }
 
     @FXML
-    private TableColumn<?, ?> status;
+    void notClearSearch(ActionEvent event) {
+
+    }
+
+    @FXML
+    void notClearSearchField(ActionEvent event) {
+
+    }
     @FXML
     public void initialize() {
         ObservableList<Apartment> items = FXCollections.observableArrayList();
@@ -84,7 +102,7 @@ public class ApartmentController {
             throw new RuntimeException(e);
         }
 
-        housesTable = new TableViewGenerator<Apartment>(Apartment.class,items).getTable();
+        TableView<Apartment> housesTable = new TableViewGenerator<Apartment>(Apartment.class,items).getTable();
         housesTable.setLayoutX(20);
         housesTable.setLayoutY(20);
         apart.getChildren().add(housesTable);
@@ -92,6 +110,9 @@ public class ApartmentController {
             System.out.println(a.getHouseName());
 
         }
+    }
+    public ApartmentController(User user){
+        profile = user;
     }
 }
 

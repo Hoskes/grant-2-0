@@ -1,4 +1,4 @@
-package com.example.grant20;
+package com.example.grant20.models;
 
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;

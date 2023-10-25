@@ -3,28 +3,14 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="683.0" prefWidth="1025.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.grant20.ApartmentController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="683.0" prefWidth="1025.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1">
    <children>
-      <AnchorPane prefHeight="687.0" prefWidth="1082.0">
+      <AnchorPane fx:id="apart" prefHeight="687.0" prefWidth="1082.0">
          <children>
-            <TableView fx:id="apartmentsTable" layoutX="39.0" layoutY="50.0" prefHeight="350.0" prefWidth="762.0">
-              <columns>
-                <TableColumn fx:id="idApartment" prefWidth="40.79995346069336" text="id" />
-                <TableColumn fx:id="complex" prefWidth="104.0" text="ЖК" />
-                  <TableColumn fx:id="address" prefWidth="74.40007019042969" text="Адрес" />
-                  <TableColumn fx:id="area" minWidth="0.0" prefWidth="97.5999755859375" text="Площадь" />
-                  <TableColumn fx:id="rooms" prefWidth="106.39996337890625" text="Кол-во комнат" />
-                  <TableColumn fx:id="entrance" prefWidth="72.0" text="Подъезд" />
-                  <TableColumn fx:id="floor" minWidth="0.0" prefWidth="77.60003662109375" text="Этаж" />
-                  <TableColumn fx:id="status" prefWidth="186.4000244140625" text="Статус" />
-              </columns>
-            </TableView>
             <Button fx:id="goBackButton" layoutX="25.0" layoutY="599.0" mnemonicParsing="false" onAction="#goToMainPage" prefHeight="55.0" prefWidth="107.0" text="Назад" />
             <Button fx:id="createApartmentButton" layoutX="837.0" layoutY="143.0" mnemonicParsing="false" onAction="#createApartment" prefHeight="37.0" prefWidth="155.0" text="Создать" />
             <Button fx:id="changeApartmentButton" layoutX="837.0" layoutY="205.0" mnemonicParsing="false" onAction="#changeApartment" prefHeight="37.0" prefWidth="155.0" text="Изменить" />
