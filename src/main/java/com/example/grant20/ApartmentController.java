@@ -77,7 +77,7 @@ public class ApartmentController {
 
     @FXML
     void goToMainPage(ActionEvent event) {
-
+        HelloApplication.changeMainPage("main.fxml",new MainController(profile));
     }
 
     @FXML

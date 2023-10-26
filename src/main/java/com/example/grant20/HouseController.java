@@ -5,31 +5,23 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 
-public class ComplexController {
+public class HouseController {
     User profile;
+    @FXML
+    private Button changeHouseButton;
 
     @FXML
-    private Button changeComplexButton;
+    private Button createHouseButton;
 
     @FXML
-    private Button createComplexButton;
+    private Button deleteHouseButton;
 
     @FXML
-    private Button deleteComplexButton;
+    private ChoiceBox<?> filterComplex;
 
     @FXML
-    private ChoiceBox<?> filterCity;
-
-    @FXML
-    private Label filterCityLabel;
-
-    @FXML
-    private ChoiceBox<?> filterStatus;
-
-    @FXML
-    private Label filterStatusLabel;
+    private ChoiceBox<?> filterStreet;
 
     @FXML
     private Button filterTableButton;
@@ -38,17 +30,17 @@ public class ComplexController {
     private Button goBackButton;
 
     @FXML
-    void changeComplex(ActionEvent event) {
+    void changeHouse(ActionEvent event) {
 
     }
 
     @FXML
-    void createComplex(ActionEvent event) {
+    void createHouse(ActionEvent event) {
 
     }
 
     @FXML
-    void deleteComplex(ActionEvent event) {
+    void deleteHouse(ActionEvent event) {
 
     }
 
@@ -56,11 +48,12 @@ public class ComplexController {
     void filterTable(ActionEvent event) {
 
     }
+
     @FXML
     void goToMainPage(ActionEvent event) {
         HelloApplication.changeMainPage("main.fxml",new MainController(profile));
     }
-    public ComplexController(User user){
+    public HouseController(User user){
         profile=user;
     }
 }

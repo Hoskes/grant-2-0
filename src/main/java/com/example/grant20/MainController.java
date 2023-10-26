@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class MainController {
+public class MainController{
     private User profile;
 
     public User getProfile() {
@@ -43,7 +43,7 @@ public class MainController {
 
     @FXML
     void logOut(ActionEvent event) {
-
+        HelloApplication.changeMainPage("hello-view.fxml");
     }
 
     @FXML
@@ -54,22 +54,22 @@ public class MainController {
 
     @FXML
     void openComplexesView(ActionEvent event) {
-        HelloApplication.changeMainPage("complexes.fxml",new ComplexController());
+        HelloApplication.changeMainPage("complexes.fxml",new ComplexController(profile));
     }
 
     @FXML
     void openHousesView(ActionEvent event) {
-
+        HelloApplication.changeMainPage("houses.fxml",new HouseController(profile));
     }
 
     @FXML
     void openProfile(ActionEvent event) {
-
+        ///
     }
 
     @FXML
     void openReports(ActionEvent event) {
-
+        HelloApplication.changeMainPage("report.fxml",new ReportController(profile));
     }
     @FXML
     public void initialize() {

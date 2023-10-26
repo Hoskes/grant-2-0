@@ -1,5 +1,6 @@
 package com.example.grant20;
 
+import com.example.grant20.models.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,15 +11,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 public class ReportController {
+    User profile;
+    @FXML
+    private Label ThisISCommentDeleteLater;
 
     @FXML
-    private TextField addedSum;
+    private TextField areaCost;
 
     @FXML
-    private TableColumn<?, ?> address;
-
-    @FXML
-    private TableColumn<?, ?> area;
+    private TextField baseCost;
 
     @FXML
     private Label coefLabel;
@@ -33,25 +34,13 @@ public class ReportController {
     private Label coefLabel3;
 
     @FXML
-    private TableColumn<?, ?> complex;
+    private Button createReportButton;
 
     @FXML
-    private TableColumn<?, ?> complex1;
+    private ChoiceBox<?> filterComplexes;
 
     @FXML
-    private TableColumn<?, ?> entrance;
-
-    @FXML
-    private ChoiceBox<?> filter1;
-
-    @FXML
-    private ChoiceBox<?> filter2;
-
-    @FXML
-    private ChoiceBox<?> filter3;
-
-    @FXML
-    private Button filterButton;
+    private ChoiceBox<?> filterHouses;
 
     @FXML
     private Label finalLabel1;
@@ -66,62 +55,60 @@ public class ReportController {
     private Label finalLabel4;
 
     @FXML
-    private Label finalLabel5;
+    private Label finalLabel41;
 
     @FXML
-    private TextField finalResult1;
+    private Button goBackButton;
 
     @FXML
-    private TextField finalResult2;
+    private Label labelComplexesFilter;
 
     @FXML
-    private TextField finalResult3;
+    private Label labelHousesFilter;
 
     @FXML
-    private TextField finalResult4;
+    private TextField roomsCost;
 
     @FXML
-    private TextField finalResult5;
+    private Label summCompanyIncome;
 
     @FXML
-    private TextField flatSum;
+    private Label summConstructionCost;
 
     @FXML
-    private TableColumn<?, ?> floor;
+    private Label summEstimatedCost;
 
     @FXML
-    private Button goBack;
+    private Label summEstimatedCostNotSold;
 
     @FXML
-    private TableView<?> housesTable;
+    private Label summEstimatedCostSold;
 
     @FXML
-    private TableColumn<?, ?> idApartment;
-
-    @FXML
-    private TextField perMeter;
-
-    @FXML
-    private TableColumn<?, ?> rooms;
-
-    @FXML
-    private TableColumn<?, ?> status;
-
-    @FXML
-    void insertAddedSum(ActionEvent event) {
+    void createReport(ActionEvent event) {
 
     }
 
     @FXML
-    void insertFlatSum(ActionEvent event) {
+    void enterAreaCost(ActionEvent event) {
 
     }
+
     @FXML
-    void insertPerMeterParameter(ActionEvent event) {
+    void enterBaseCost(ActionEvent event) {
 
     }
+
     @FXML
-    public void initialize(){
+    void enterRoomsCost(ActionEvent event) {
+
     }
 
+    @FXML
+    void goToMainPage(ActionEvent event) {
+        HelloApplication.changeMainPage("main.fxml",new MainController(profile));
+    }
+    public ReportController(User user){
+        profile=user;
+    }
 }
