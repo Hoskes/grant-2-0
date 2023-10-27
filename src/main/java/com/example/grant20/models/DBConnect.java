@@ -32,7 +32,7 @@ public class DBConnect {
         try {
             statement = getConnection().createStatement();
             ResultSet result = statement.executeQuery(query);
-            //System.out.println(result);
+
             return result;
         } catch (SQLException e) {
             System.out.println("Query Error");

@@ -1,13 +1,14 @@
-package com.example.grant20;
+package com.example.grant20.controllers;
 
+import com.example.grant20.HelloApplication;
 import com.example.grant20.models.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -17,6 +18,8 @@ import java.sql.SQLException;
 
 public class ApartmentController {
     User profile;
+    @FXML
+    TableView<Apartment> table;
     @FXML
     private AnchorPane apart;
     @FXML
@@ -92,6 +95,7 @@ public class ApartmentController {
     @FXML
     public void initialize() {
         ObservableList<Apartment> items = FXCollections.observableArrayList();
+
         ResultSet resultSet = DBConnect.getDBConnect().executeQuery(Query.getApartments);
         try {
             while (resultSet.next()) {
@@ -101,15 +105,10 @@ public class ApartmentController {
             System.out.println("Apartment list creation error");
             throw new RuntimeException(e);
         }
-
-        TableView<Apartment> housesTable = new TableViewGenerator<Apartment>(Apartment.class,items).getTable();
-        housesTable.setLayoutX(20);
-        housesTable.setLayoutY(20);
+        FilteredList<Apartment> filteredItems = new FilteredList<>(items,p->true);
+        TableView<Apartment> housesTable = new TableViewGenerator<Apartment>(Apartment.class,filteredItems).getTable();
+        table = housesTable;
         apart.getChildren().add(housesTable);
-        for (Apartment a:items) {
-            System.out.println(a.getHouseName());
-
-        }
     }
     public ApartmentController(User user){
         profile = user;

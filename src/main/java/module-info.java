@@ -8,4 +8,6 @@ module com.example.grant20 {
     exports com.example.grant20;
     exports com.example.grant20.models;
     opens com.example.grant20.models to javafx.fxml;
+    exports com.example.grant20.controllers;
+    opens com.example.grant20.controllers to javafx.fxml;
 }

@@ -16,10 +16,10 @@ public class Regex {
     public static String getCheck_name() {
         return check_name;
     }
-    public static String getCheck_log() {
+    public static String getCheckLog() {
         return check_log;
     }
-    public static String getCheck_psw() {
+    public static String getCheckPsw() {
         return check_psw;
     }
     public static void addListenerFormatter(TextField t, String regex) {  //цветовая реакция на заполнение полей

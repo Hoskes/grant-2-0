@@ -1,5 +1,6 @@
-package com.example.grant20;
+package com.example.grant20.controllers;
 
+import com.example.grant20.HelloApplication;
 import com.example.grant20.models.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

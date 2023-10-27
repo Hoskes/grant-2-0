@@ -119,4 +119,9 @@ public class Apartment {
     public void setCost(int cost) {
         this.cost = cost;
     }
+
+    @Override
+    public String toString() {
+        return "1"+id+"2"+houseName+"3"+apartmentNumber+"4"+area+"5"+rooms+"6"+entrance+"7"+floor+"8"+statusSale+"9"+addedValue;
+    }
 }

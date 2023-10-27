@@ -1,13 +1,12 @@
-package com.example.grant20;
+package com.example.grant20.controllers;
 
+import com.example.grant20.HelloApplication;
 import com.example.grant20.models.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 public class ReportController {

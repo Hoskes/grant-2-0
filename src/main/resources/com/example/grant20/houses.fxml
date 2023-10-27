@@ -8,7 +8,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="551.0" prefWidth="904.0">
+      <AnchorPane fx:id="pane" prefHeight="551.0" prefWidth="904.0">
          <children>
             <ChoiceBox fx:id="filterComplex" layoutX="243.0" layoutY="496.0" prefHeight="26.0" prefWidth="271.0" />
             <ChoiceBox fx:id="filterStreet" layoutX="243.0" layoutY="436.0" prefHeight="26.0" prefWidth="271.0" />

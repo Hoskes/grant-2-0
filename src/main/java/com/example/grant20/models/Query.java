@@ -11,4 +11,5 @@ public class Query {
     public static final String auth_log = "test@mail.ru";
     public static final String auth_psw = "Username1234!";
     public static final String getApartments = "SELECT * FROM apartment";
+    public static final String getHouses = "SELECT house.id,number,addedValue,buildingCosts,name FROM `house` JOIN (SELECT id,name FROM complex) as A ON complexID=A.id";
 }

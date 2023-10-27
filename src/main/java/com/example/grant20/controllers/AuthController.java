@@ -1,5 +1,6 @@
-package com.example.grant20;
+package com.example.grant20.controllers;
 
+import com.example.grant20.HelloApplication;
 import com.example.grant20.models.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ public class AuthController {
 
     @FXML
     public void initialize() {
-        Regex.addListenerFormatter(log, Regex.getCheck_log());
+        Regex.addListenerFormatter(log, Regex.getCheckLog());
         ////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////
@@ -57,7 +57,7 @@ public class AuthController {
 
     @FXML
     void enter(ActionEvent event) {
-        if (Regex.checkName(log.getText(), Regex.getCheck_log()) & Regex.checkName(psw.getText(), Regex.getCheck_psw())) {
+        if (Regex.checkName(log.getText(), Regex.getCheckLog()) & Regex.checkName(psw.getText(), Regex.getCheckPsw())) {
             try {
                 ResultSet resultSet = DBConnect.executePreparedQuery(Query.checkAuth,new ArrayList<String>(Arrays.asList(log.getText(),PasswordHashing.hashPassword(psw.getText()))));
                 if (resultSet.next()) {//при ненулевом результате
