@@ -1,0 +1,38 @@
+
+.root {
+    -fx-background-color: #FFFFFF;
+    -fx-font-family: "Tw Cen MT";
+}
+
+/*.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #37474F;
+    -fx-background-color: #FFFFFF;
+    -fx-border-radius: 10;
+    -fx-border-color: rgb(255, 156, 26);
+}*/
+
+.label.bold {
+    -fx-font-weight: bold;
+}
+
+.text-field {
+    -fx-font-size: 14px;
+}
+
+.button {
+    -fx-font-size: 12px;
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: rgb(55, 71, 79);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgb(255, 156, 26);
+}
+
+.choice-box {
+     -fx-font-size: 14px;
+        -fx-text-fill: #37474F;
+        -fx-background-color: #FFFFFF;
+        -fx-border-radius: 10;
+        -fx-border-color: rgb(255, 156, 26);
+}

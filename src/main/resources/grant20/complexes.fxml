@@ -5,13 +5,20 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="1028.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox stylesheets="@withTables.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="1028.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="589.0" prefWidth="1028.0">
          <children>
+            <ImageView fitHeight="592.0" fitWidth="1053.0" layoutX="-18.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@backBig.png" />
+               </image>
+            </ImageView>
             <TableView fx:id="complexesTable" layoutX="39.0" layoutY="50.0" prefHeight="350.0" prefWidth="720.0">
               <columns>
                 <TableColumn fx:id="idComplex" prefWidth="40.79995346069336" text="id" />
@@ -22,15 +29,20 @@
                   <TableColumn fx:id="countHouses" prefWidth="183.20001220703125" text="Кол-во домов" />
               </columns>
             </TableView>
-            <Button fx:id="goBackButton" layoutX="25.0" layoutY="507.0" mnemonicParsing="false" onAction="#goToMainPage" prefHeight="55.0" prefWidth="107.0" text="Назад" />
-            <Button fx:id="createComplexButton" layoutX="818.0" layoutY="60.0" mnemonicParsing="false" onAction="#createComplex" prefHeight="37.0" prefWidth="155.0" text="Создать" />
+            <Button fx:id="goBackButton" layoutX="39.0" layoutY="530.0" mnemonicParsing="false" onAction="#goToMainPage" prefHeight="26.0" prefWidth="99.0" text="Назад" />
+            <Button fx:id="createComplexButton" layoutX="820.0" layoutY="143.0" mnemonicParsing="false" onAction="#createComplex" prefHeight="37.0" prefWidth="155.0" text="Создать" />
             <ChoiceBox fx:id="filterStatus" layoutX="214.0" layoutY="530.0" prefHeight="26.0" prefWidth="271.0" />
             <ChoiceBox fx:id="filterCity" layoutX="214.0" layoutY="470.0" prefHeight="26.0" prefWidth="271.0" />
             <Button fx:id="filterTableButton" layoutX="521.0" layoutY="488.0" mnemonicParsing="false" onAction="#filterTable" prefHeight="37.0" prefWidth="155.0" text="Фильтрация" />
             <Label fx:id="filterStatusLabel" layoutX="214.0" layoutY="507.0" text="Фильтр по статусу" />
             <Label fx:id="filterCityLabel" layoutX="214.0" layoutY="447.0" text="Фильтр по городу" />
-            <Button fx:id="changeComplexButton" layoutX="818.0" layoutY="122.0" mnemonicParsing="false" onAction="#changeComplex" prefHeight="37.0" prefWidth="155.0" text="Изменить" />
-            <Button fx:id="deleteComplexButton" layoutX="818.0" layoutY="187.0" mnemonicParsing="false" onAction="#deleteComplex" prefHeight="37.0" prefWidth="155.0" text="Удалить" />
+            <Button fx:id="changeComplexButton" layoutX="820.0" layoutY="205.0" mnemonicParsing="false" onAction="#changeComplex" prefHeight="37.0" prefWidth="155.0" text="Изменить" />
+            <Button fx:id="deleteComplexButton" layoutX="820.0" layoutY="270.0" mnemonicParsing="false" onAction="#deleteComplex" prefHeight="37.0" prefWidth="155.0" text="Удалить" />
+            <ImageView fitHeight="60" fitWidth="150" layoutX="864.0" layoutY="526.0">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

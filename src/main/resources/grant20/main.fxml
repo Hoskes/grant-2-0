@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="382.0" prefWidth="526.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="514.0" prefWidth="675.0" stylesheets="@withTables.css">
+         <children>
+            <ImageView fitHeight="503.0" fitWidth="689.0" layoutX="-95.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@backBig.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="exitButton" layoutX="92.0" layoutY="319.0" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="189.0" stylesheets="@style.css" text="Выйти из аккаунта" />
+            <Button fx:id="appartmentButton" layoutX="30.0" layoutY="69.0" mnemonicParsing="false" onAction="#openApartmentsView" prefHeight="44.0" prefWidth="313.0" stylesheets="@style.css" text="Квартиры" />
+            <Button fx:id="housesButton" layoutX="30.0" layoutY="127.0" mnemonicParsing="false" onAction="#openHousesView" prefHeight="44.0" prefWidth="314.0" stylesheets="@style.css" text="Дома" />
+            <Button fx:id="complexButton" layoutX="30.0" layoutY="187.0" mnemonicParsing="false" onAction="#openComplexesView" prefHeight="44.0" prefWidth="314.0" stylesheets="@style.css" text="ЖК" />
+            <Button fx:id="reportButton" layoutX="30.0" layoutY="247.0" mnemonicParsing="false" onAction="#openReports" prefHeight="44.0" prefWidth="314.0" stylesheets="@style.css" text="Отчет" />
+            <Label fx:id="labelFioAuthorizedPerson" layoutX="357.0" layoutY="25.0" style="-fx-text-fill: rgb(55, 71, 79); -fx-font-size: 12pt; -fx-font-weight: bold;" stylesheets="@style.css" text="Фамилия Имя Отчество" textAlignment="RIGHT" />
+            <Button fx:id="openProfileButton" layoutX="410.0" layoutY="74.0" mnemonicParsing="false" onAction="#openProfile" prefHeight="34.0" prefWidth="81.0" style="-fx-font-family: arial;" stylesheets="@style.css" text="Профиль" />
+            <ImageView fitHeight="63.0" fitWidth="166.0" layoutX="358.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
