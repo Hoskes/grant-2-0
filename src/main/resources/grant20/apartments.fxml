@@ -4,30 +4,42 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="683.0" prefWidth="1025.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="683.0" prefWidth="1025.0" stylesheets="@withTables.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane fx:id="apart" prefHeight="687.0" prefWidth="1082.0">
          <children>
-            <Button fx:id="goBackButton" layoutX="25.0" layoutY="599.0" mnemonicParsing="false" onAction="#goToMainPage" prefHeight="55.0" prefWidth="107.0" text="Назад" />
+            <ImageView fitHeight="577.0" fitWidth="1025.0" layoutX="-6.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@backBig.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="goBackButton" layoutX="39.0" layoutY="634.0" mnemonicParsing="false" onAction="#goToMainPage" prefHeight="26.0" prefWidth="89.0" text="Назад" />
             <Button fx:id="createApartmentButton" layoutX="837.0" layoutY="143.0" mnemonicParsing="false" onAction="#createApartment" prefHeight="37.0" prefWidth="155.0" text="Создать" />
             <Button fx:id="changeApartmentButton" layoutX="837.0" layoutY="205.0" mnemonicParsing="false" onAction="#changeApartment" prefHeight="37.0" prefWidth="155.0" text="Изменить" />
             <Button fx:id="deleteApartmentButton" layoutX="837.0" layoutY="270.0" mnemonicParsing="false" onAction="#deleteApartment" prefHeight="37.0" prefWidth="155.0" text="Удалить" />
-            <TextField fx:id="notClearSearchField" layoutX="439.0" layoutY="437.0" onAction="#notClearSearchField" prefHeight="26.0" prefWidth="271.0" />
-            <Button fx:id="notClearSearchButton" layoutX="732.0" layoutY="431.0" mnemonicParsing="false" onAction="#notClearSearch" prefHeight="37.0" prefWidth="155.0" text="Поиск" />
+            <TextField fx:id="notClearSearchField" layoutX="521.0" layoutY="446.0" onAction="#notClearSearchField" prefHeight="26.0" prefWidth="271.0" />
+            <Button fx:id="notClearSearchButton" layoutX="818.0" layoutY="469.0" mnemonicParsing="false" onAction="#notClearSearch" prefHeight="37.0" prefWidth="155.0" text="Поиск" />
             <ChoiceBox fx:id="filterComplex" layoutX="219.0" layoutY="508.0" prefHeight="26.0" prefWidth="271.0" />
             <ChoiceBox fx:id="filterHouse" layoutX="219.0" layoutY="571.0" prefHeight="26.0" prefWidth="271.0" />
             <ChoiceBox fx:id="filterFloor" layoutX="219.0" layoutY="634.0" prefHeight="26.0" prefWidth="271.0" />
             <ChoiceBox fx:id="filterEntrance" layoutX="521.0" layoutY="508.0" prefHeight="26.0" prefWidth="271.0" />
             <ChoiceBox fx:id="filterStatus" layoutX="521.0" layoutY="571.0" prefHeight="26.0" prefWidth="271.0" />
-            <Button fx:id="filterTableButton" layoutX="819.0" layoutY="571.0" mnemonicParsing="false" onAction="#filterTable" prefHeight="37.0" prefWidth="155.0" text="Фильтрация" />
+            <Button fx:id="filterTableButton" layoutX="818.0" layoutY="537.0" mnemonicParsing="false" onAction="#filterTable" prefHeight="37.0" prefWidth="155.0" text="Фильтрация" />
             <Label layoutX="219.0" layoutY="479.0" text="Фильтр по ЖК" />
             <Label layoutX="219.0" layoutY="547.0" text="Фильтр по дому" />
             <Label layoutX="219.0" layoutY="609.0" text="Фильтр по этажу" />
             <Label layoutX="521.0" layoutY="479.0" text="Фильтр по подъезду" />
             <Label layoutX="521.0" layoutY="547.0" text="Фильтр по статусу" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="818.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

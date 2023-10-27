@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox stylesheets="@hello.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="514.0" prefWidth="922.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="514.0" prefWidth="767.0">
+         <children>
+            <ImageView fitHeight="540.0" fitWidth="969.0" layoutX="-19.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@backBig.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="labelF" layoutX="191.0" layoutY="156.0" text="Фамилия" />
+            <TextField fx:id="enterF" layoutX="194.0" layoutY="182.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#enterF" prefHeight="26.0" prefWidth="210.0" />
+            <Label fx:id="labelPhoneNumber" layoutX="500.0" layoutY="204.0" text="Номер телефона" />
+            <TextField fx:id="enterEmail" layoutX="500.0" layoutY="165.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#enterEmail" prefHeight="26.0" prefWidth="210.0" />
+            <Label fx:id="labelPassword1" layoutX="505.0" layoutY="259.0" text="Пароль" />
+            <PasswordField fx:id="enterPassword" layoutX="500.0" layoutY="280.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#enterPassword" prefHeight="26.0" prefWidth="210.0" />
+            <Button fx:id="submitRegistration" layoutX="372.0" layoutY="400.0" mnemonicParsing="false" onAction="#confirmRegistrationSuccess" prefHeight="34.0" prefWidth="174.0" text="Зарегистрироваться" />
+            <Label fx:id="labelEmail" layoutX="501.0" layoutY="146.0" prefHeight="18.0" prefWidth="249.0" text="Email" />
+            <Label fx:id="labelPassword2" layoutX="501.0" layoutY="310.0" text="Повторите пароль" />
+            <Label fx:id="labelI" layoutX="194.0" layoutY="226.0" text="Имя" />
+            <TextField fx:id="enterI" layoutX="194.0" layoutY="249.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#enterI" prefHeight="26.0" prefWidth="210.0" />
+            <Label fx:id="labelO" layoutX="192.0" layoutY="293.0" text="Отчество" />
+            <TextField fx:id="enterO" layoutX="191.0" layoutY="314.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#enterO" prefHeight="26.0" prefWidth="210.0" />
+            <Button fx:id="goBackButton" layoutX="14.0" layoutY="479.0" mnemonicParsing="false" onAction="#goToAuthorizationPage" prefHeight="34.0" prefWidth="93.0" text="Назад" />
+            <PasswordField fx:id="repeatPassword" layoutX="500.0" layoutY="331.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#repeatPassword" prefHeight="26.0" prefWidth="210.0" />
+            <TextField fx:id="enterPhoneNumber" layoutX="500.0" layoutY="222.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#enterPhoneNumber" prefHeight="26.0" prefWidth="210.0" />
+            <Text layoutX="412.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Регистрация">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
