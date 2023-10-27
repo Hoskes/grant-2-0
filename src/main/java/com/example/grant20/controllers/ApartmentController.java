@@ -80,6 +80,7 @@ public class ApartmentController {
 
     @FXML
     void goToMainPage(ActionEvent event) {
+        goBackButton.setStyle("-fx-text-fill: red; ");
         HelloApplication.changeMainPage("main.fxml",new MainController(profile));
     }
 
@@ -94,9 +95,8 @@ public class ApartmentController {
     }
     @FXML
     public void initialize() {
-        ObservableList<Apartment> items = FXCollections.observableArrayList();
-
         ResultSet resultSet = DBConnect.getDBConnect().executeQuery(Query.getApartments);
+        ObservableList<Apartment> items = FXCollections.observableArrayList();
         try {
             while (resultSet.next()) {
                 items.add(new Apartment(resultSet));

@@ -11,20 +11,16 @@ public class TableFilter<T> {
     private TextField filterValue;
     private ChoiceBox<T> filterCategory;
     private FilteredList<T> filteredData;
-    public TableFilter(TextField filterValue, TableFilter<T> filterData){
+    public TableFilter(ChoiceBox<T> category,TextField filterValue, TableFilter<T> filterData){
         filterValue.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate( person -> {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
-                String lowerCaseFilter = newValue.toLowerCase();
-
+                String lowerCaseFilter = category.getSelectionModel().getSelectedItem().toString()+newValue.toLowerCase();
                 if ((person.toString().toLowerCase().contains(lowerCaseFilter))) {
                     return true;
-                } else if (person.toString().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
                 }
-
                 return false;
             });
         });

@@ -36,6 +36,7 @@ public class HelloApplication extends Application {
     }
 
     public static void changeMainPage(String path) { //сменить текущую сцену
+        //changeMainPage("hello-view.fxml",new HelloController());
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(path));
         try {
             Stage stage = s;
