@@ -70,6 +70,7 @@ public class House {
         this.complexName = complexName;
     }
 
+
     public String getStreet() {
         return street;
     }
@@ -92,5 +93,10 @@ public class House {
 
     public void setCount_not_sold(int count_not_sold) {
         this.count_not_sold = count_not_sold;
+
+    @Override
+    public String toString() {
+        return "1"+id+"2"+number+"3"+addedValue+"4"+addedValue+"5"+buildingCosts+"6"+complexName;
+
     }
 }

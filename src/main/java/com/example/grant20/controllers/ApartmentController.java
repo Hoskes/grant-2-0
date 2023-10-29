@@ -5,6 +5,7 @@ import com.example.grant20.models.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,8 +14,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
+import java.lang.reflect.Field;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.function.Predicate;
 
 public class ApartmentController {
     User profile;
@@ -33,9 +38,10 @@ public class ApartmentController {
 
     @FXML
     private ChoiceBox<?> filterComplex;
-
     @FXML
-    private ChoiceBox<?> filterEntrance;
+    private TextField filterTo;
+    @FXML
+    private ChoiceBox<String> filterEntrance;
 
     @FXML
     private ChoiceBox<?> filterFloor;
@@ -58,6 +64,7 @@ public class ApartmentController {
     @FXML
     private TextField notClearSearchField;
 
+
     @FXML
     void changeApartment(ActionEvent event) {
 
@@ -67,7 +74,10 @@ public class ApartmentController {
     void createApartment(ActionEvent event) {
 
     }
+    @FXML
+    void filter(ActionEvent event){
 
+    }
     @FXML
     void deleteApartment(ActionEvent event) {
 
@@ -106,10 +116,19 @@ public class ApartmentController {
             throw new RuntimeException(e);
         }
         FilteredList<Apartment> filteredItems = new FilteredList<>(items,p->true);
+
         TableView<Apartment> apartmentTable = new TableViewGenerator<Apartment>(Apartment.class,filteredItems).getTable();
         table = apartmentTable;
         apart.getChildren().add(apartmentTable);
+
+        TableFilterGenerator<Apartment> filter= new TableFilterGenerator(housesTable,filteredItems);
+        filter.addNewEqualsFilter(notClearSearchField,"rooms");
+        filter.addNewEqualsFilter(filterTo,"cost");
+        filter.setFiltersToTable();
+
+
     }
+
     public ApartmentController(User user){
         profile = user;
     }

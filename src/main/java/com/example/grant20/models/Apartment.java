@@ -98,4 +98,24 @@ public class Apartment {
         this.statusSale = statusSale;
     }
 
+
+
+    public int getAddedValue() {
+        return addedValue;
+    }
+
+    public void setAddedValue(int addedValue) {
+        this.addedValue = addedValue;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
+
+
 }
