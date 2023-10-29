@@ -106,9 +106,9 @@ public class ApartmentController {
             throw new RuntimeException(e);
         }
         FilteredList<Apartment> filteredItems = new FilteredList<>(items,p->true);
-        TableView<Apartment> housesTable = new TableViewGenerator<Apartment>(Apartment.class,filteredItems).getTable();
-        table = housesTable;
-        apart.getChildren().add(housesTable);
+        TableView<Apartment> apartmentTable = new TableViewGenerator<Apartment>(Apartment.class,filteredItems).getTable();
+        table = apartmentTable;
+        apart.getChildren().add(apartmentTable);
     }
     public ApartmentController(User user){
         profile = user;

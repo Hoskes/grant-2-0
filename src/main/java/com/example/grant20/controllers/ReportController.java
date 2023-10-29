@@ -1,13 +1,17 @@
 package com.example.grant20.controllers;
 
 import com.example.grant20.HelloApplication;
-import com.example.grant20.models.User;
+import com.example.grant20.models.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ReportController {
     User profile;
@@ -84,6 +88,12 @@ public class ReportController {
     private Label summEstimatedCostSold;
 
     @FXML
+    private AnchorPane reportAnchor;
+
+    @FXML
+    TableView<Report> table;
+
+    @FXML
     void createReport(ActionEvent event) {
 
     }
@@ -101,6 +111,24 @@ public class ReportController {
     @FXML
     void enterRoomsCost(ActionEvent event) {
 
+    }
+
+    @FXML
+    public void initialize() {
+        ResultSet resultSet = DBConnect.getDBConnect().executeQuery(Query.getReport);
+        ObservableList<Report> items = FXCollections.observableArrayList();
+        try {
+            while (resultSet.next()) {
+                items.add(new Report(resultSet));
+            }
+        } catch (SQLException e) {
+            System.out.println("Report list creation error");
+            throw new RuntimeException(e);
+        }
+        FilteredList<Report> filteredItems = new FilteredList<>(items, p->true);
+        TableView<Report> reportTable = new TableViewGenerator<Report>(Report.class,filteredItems).getTable();
+        table = reportTable;
+        reportAnchor.getChildren().add(reportTable);
     }
 
     @FXML

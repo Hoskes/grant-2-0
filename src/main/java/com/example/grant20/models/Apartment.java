@@ -6,38 +6,32 @@ import java.sql.SQLException;
 public class Apartment {
     int id;
     String houseName;
-    String apartmentNumber;
+    String address;
     double area;
     int rooms;
     int entrance;
     int floor;
     String statusSale;
-    int addedValue;
-    int cost;
 
-    public Apartment(int id, String houseName, String apartmentNumber, double area, int rooms, int entrance, int floor, String statusSale, int addedValue, int cost) {
+    public Apartment(int id, String houseName, String address, double area, int rooms, int entrance, int floor, String statusSale) {
         this.id = id;
         this.houseName = houseName;
-        this.apartmentNumber = apartmentNumber;
+        this.address = address;
         this.area = area;
         this.rooms = rooms;
         this.entrance = entrance;
         this.floor = floor;
         this.statusSale = statusSale;
-        this.addedValue = addedValue;
-        this.cost = cost;
     }
     public Apartment(ResultSet resultSet) throws SQLException {
         this.id = resultSet.getInt(1);
         this.houseName = resultSet.getString(2);
-        this.apartmentNumber = resultSet.getString(3);
+        this.address = resultSet.getString(3);
         this.area = resultSet.getInt(4);
         this.rooms = resultSet.getInt(5);
         this.entrance = resultSet.getInt(6);
         this.floor = resultSet.getInt(7);
         this.statusSale = resultSet.getString(8);
-        this.addedValue = resultSet.getInt(9);
-        this.cost = resultSet.getInt(10);
     }
 
     public int getId() {
@@ -56,12 +50,12 @@ public class Apartment {
         this.houseName = houseName;
     }
 
-    public String getApartmentNumber() {
-        return apartmentNumber;
+    public String getAddress() {
+        return address;
     }
 
-    public void setApartmentNumber(String apartmentNumber) {
-        this.apartmentNumber = apartmentNumber;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public double getArea() {
@@ -104,25 +98,4 @@ public class Apartment {
         this.statusSale = statusSale;
     }
 
-    public int getAddedValue() {
-        return addedValue;
-    }
-
-    public void setAddedValue(int addedValue) {
-        this.addedValue = addedValue;
-    }
-
-    public int getCost() {
-        return cost;
-    }
-
-    public void setCost(int cost) {
-        this.cost = cost;
-    }
-
-    
-    @Override
-    public String toString() {
-        return "1"+id+"2"+houseName+"3"+apartmentNumber+"4"+area+"5"+rooms+"6"+entrance+"7"+floor+"8"+statusSale+"9"+addedValue;
-    }
 }
