@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox stylesheets="@withTables.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="1028.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="1028.0" stylesheets="@withTables.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="589.0" prefWidth="1028.0">
          <children>
@@ -26,7 +26,7 @@
                   <TableColumn fx:id="city" prefWidth="136.80003356933594" text="Город" />
                   <TableColumn fx:id="street" minWidth="0.0" prefWidth="107.199951171875" text="Улица" />
                   <TableColumn fx:id="statusConstruction" prefWidth="140.79998779296875" text="Статус" />
-                  <TableColumn fx:id="countHouses" prefWidth="183.20001220703125" text="Кол-во домов" />
+                  <TableColumn fx:id="countHouses" prefWidth="188.79998779296875" text="Кол-во домов" />
               </columns>
             </TableView>
             <Button fx:id="goBackButton" layoutX="39.0" layoutY="530.0" mnemonicParsing="false" onAction="#goToMainPage" prefHeight="26.0" prefWidth="99.0" text="Назад" />

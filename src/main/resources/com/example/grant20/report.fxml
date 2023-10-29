@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox stylesheets="@withTables.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="1205.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="1205.0" stylesheets="@withTables.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="667.0" prefWidth="1218.0">
          <children>
@@ -30,7 +30,7 @@
                   <TableColumn fx:id="cost" minWidth="0.0" prefWidth="186.4000244140625" text="Стоимость" />
                </columns>
             </TableView>
-            <Button fx:id="goBackButton" layoutX="14.0" layoutY="590.0" mnemonicParsing="false" onAction="#goToMainPage" prefHeight="55.0" prefWidth="107.0" text="Назад" />
+            <Button fx:id="goBackButton" layoutX="14.0" layoutY="618.0" mnemonicParsing="false" onAction="#goToMainPage" prefHeight="27.0" prefWidth="82.0" text="Назад" />
             <Label fx:id="coefLabel" layoutX="738.0" layoutY="84.0" text="Коэффициенты компании">
                <font>
                   <Font size="14.0" />
