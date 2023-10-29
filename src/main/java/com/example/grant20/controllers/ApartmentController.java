@@ -116,15 +116,15 @@ public class ApartmentController {
             throw new RuntimeException(e);
         }
         FilteredList<Apartment> filteredItems = new FilteredList<>(items,p->true);
-        TableView<Apartment> housesTable = new TableViewGenerator<Apartment>(Apartment.class,filteredItems).getTable();
-        table = housesTable;
-        apart.getChildren().add(housesTable);
 
-        TableFilterGenerator<Apartment> filter= new TableFilterGenerator(housesTable,filteredItems);
+        TableView<Apartment> apartmentTable = new TableViewGenerator<Apartment>(Apartment.class,filteredItems).getTable();
+        table = apartmentTable;
+        apart.getChildren().add(apartmentTable);
+
+        TableFilterGenerator<Apartment> filter= new TableFilterGenerator(apartmentTable,filteredItems);
         filter.addNewEqualsFilter(notClearSearchField,"rooms");
-        filter.addNewEqualsFilter(filterTo,"cost");
+        filter.addNewEqualsFilter(filterTo,"statusSale");
         filter.setFiltersToTable();
-
     }
 
     public ApartmentController(User user){
