@@ -70,4 +70,8 @@ public class House {
     public void setComplexName(String complexName) {
         this.complexName = complexName;
     }
+    @Override
+    public String toString() {
+        return "1"+id+"2"+number+"3"+addedValue+"4"+addedValue+"5"+buildingCosts+"6"+complexName;
+    }
 }
