@@ -2,6 +2,7 @@ package com.example.grant20.models.features;
 
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
@@ -25,6 +26,35 @@ public class TableFilterGenerator<T> {
 
     public void addNewEqualsFilter(TextField notClearSearchField, String category) {
         notClearSearchField.textProperty().addListener(((observableValue, oldValue, newValue) -> {
+            Predicate<T> a = person -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String data = "";
+                try {
+                    Method fieldGetter = person.getClass().getMethod("get" + category.substring(0, 1).toUpperCase() + category.substring(1));
+                    data = fieldGetter.invoke(person).toString();
+                } catch (NoSuchMethodException e) {
+                    System.out.println("GetterFindError");
+                    throw new RuntimeException(e);
+                } catch (InvocationTargetException e) {
+                    throw new RuntimeException(e);
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException(e);
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (data.toLowerCase().contains(newValue.toLowerCase())) {
+                    return true; // Filter matches first name.
+                }
+                return false; // Does not match.
+            };
+            map.put(category, a);
+            filteredItems.setPredicate(lastPredicates());
+
+        }));
+    }
+    public void addNewEqualsFilter(ChoiceBox<String> notClearSearchField, String category) {
+        notClearSearchField.getSelectionModel().selectedItemProperty().addListener(((observableValue, oldValue, newValue) -> {
             Predicate<T> a = person -> {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;

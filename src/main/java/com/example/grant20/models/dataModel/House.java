@@ -11,6 +11,8 @@ public class House {
     String street;
     int count_sold;
     int count_not_sold;
+    String addedValue;
+    String buildingCost;
 
 
     public House(int id, String complexName, String street, String number, String status, int count_sold, int count_not_sold) {
@@ -31,6 +33,8 @@ public class House {
             this.status = resultSet.getString(5);
             this.count_sold = resultSet.getInt(6);
             this.count_not_sold = resultSet.getInt(7);
+            this.addedValue = resultSet.getString(8);
+            this.buildingCost = resultSet.getString(9);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -93,5 +97,21 @@ public class House {
 
     public void setCount_not_sold(int count_not_sold) {
         this.count_not_sold = count_not_sold;
+    }
+
+    public String getAddedValue() {
+        return addedValue;
+    }
+
+    public void setAddedValue(String addedValue) {
+        this.addedValue = addedValue;
+    }
+
+    public String getBuildingCost() {
+        return buildingCost;
+    }
+
+    public void setBuildingCost(String buildingCost) {
+        this.buildingCost = buildingCost;
     }
 }

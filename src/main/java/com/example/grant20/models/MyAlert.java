@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 public class MyAlert {
     private Alert alert;
     public MyAlert(String alertText){
-        alert = new Alert(Alert.AlertType.CONFIRMATION, alertText+"?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+        alert = new Alert(Alert.AlertType.CONFIRMATION, alertText, ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
         alert.showAndWait();
 
     }

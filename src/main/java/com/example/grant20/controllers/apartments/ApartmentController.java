@@ -87,7 +87,7 @@ public class ApartmentController {
     }
     @FXML
     void deleteApartment(ActionEvent event) {
-        MyAlert alert = new MyAlert("Вы действительно хотите удалить запись №"+selected.getId());
+        MyAlert alert = new MyAlert("Вы действительно хотите удалить запись №"+selected.getId()+"?");
         if (alert.getAlert() == ButtonType.YES) {
             table.getItems().remove(selected);
             //удалить строчку из таблицы

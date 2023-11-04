@@ -49,18 +49,23 @@ public class HouseController {
 
     @FXML
     void changeHouse(ActionEvent event) {
-        System.out.println(table.getSelectionModel().getSelectedItem().getComplexName());
+        if (table.getSelectionModel().getSelectedItem() != null) {
+            HelloApplication.changeMainPage("add_change_house.fxml", new AddHouseController(this,table.getSelectionModel().getSelectedItem()));
+        }
+        else {
+            HelloApplication.changeMainPage("add_change_house.fxml",new AddHouseController(this));
+        }
     }
 
     @FXML
     void createHouse(ActionEvent event) {
         System.out.println(table.getSelectionModel().getSelectedItem());
-        HelloApplication.changeMainPage("add_change_house.fxml",new AddHouseController());
+        HelloApplication.changeMainPage("add_change_house.fxml",new AddHouseController(this));
     }
 
     @FXML
     void deleteHouse(ActionEvent event) {
-        MyAlert alert = new MyAlert("Вы действительно хотите удалить эту запись");
+        MyAlert alert = new MyAlert("Вы действительно хотите удалить эту запись?");
         if (alert.getAlert() == ButtonType.YES) {
             House deletedItem = table.getSelectionModel().getSelectedItem();
             table.getItems().remove(deletedItem);
@@ -69,14 +74,10 @@ public class HouseController {
     }
 
     @FXML
-    void filterTable(ActionEvent event) {
-
-    }
-    @FXML
     public void initialize() {
         ObservableList<House> items = FXCollections.observableArrayList();
         FilteredList<House> filteredItems = new FilteredList<>(items,p->true);
-        ResultSet resultSet = DBConnect.getDBConnect().executeQuery(Query.getHouses);
+        ResultSet resultSet = DBConnect.getDBConnect().executeQuery(Query.getAllFromHouses);
         try {
             while (resultSet.next()) {
                 items.add(new House(resultSet));
@@ -86,7 +87,7 @@ public class HouseController {
             throw new RuntimeException(e);
         }
 
-        TableView<House> housesTable = new TableViewGenerator(House.class, filteredItems).getTable();
+        TableView<House> housesTable = new TableViewGenerator(House.class, filteredItems,0,8).getTable();
         pane.getChildren().add(housesTable);
         table = housesTable;
         TableFilterGenerator<House> filter = new TableFilterGenerator<>(table,filteredItems);

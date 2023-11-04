@@ -1,12 +1,17 @@
 package com.example.grant20.controllers.profile;
 
 import com.example.grant20.HelloApplication;
+import com.example.grant20.models.DB.DBConnect;
+import com.example.grant20.models.DB.Query;
+import com.example.grant20.models.MyAlert;
+import com.example.grant20.models.features.PasswordHashing;
+import com.example.grant20.models.features.Regex;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class RegisterController {
 
@@ -60,50 +65,53 @@ public class RegisterController {
 
     @FXML
     void confirmRegistrationSuccess(ActionEvent event) {
-
-    }
-
-    @FXML
-    void enterEmail(ActionEvent event) {
-
-    }
-
-    @FXML
-    void enterF(ActionEvent event) {
-
-    }
-
-    @FXML
-    void enterI(ActionEvent event) {
-
-    }
-
-    @FXML
-    void enterO(ActionEvent event) {
-
-    }
-
-    @FXML
-    void enterPassword(ActionEvent event) {
-
-    }
-
-    @FXML
-    void enterPhoneNumber(ActionEvent event) {
-
+        boolean isName = enterF.getText().matches(Regex.getCheck_name())
+                & enterI.getText().matches(Regex.getCheck_name())
+                & enterO.getText().matches(Regex.getCheck_name());
+        boolean isPassword = enterPassword.getText().matches(Regex.getCheckPsw())
+                & repeatPassword.getText().equals(enterPassword.getText());
+        boolean isEmail = enterEmail.getText().matches(Regex.getCheckLog());
+        boolean isPhone = enterPhoneNumber.getText().matches(Regex.checkPhone);
+        if (isName & isPassword & isEmail & isPhone) {
+            //запрос к БД
+            DBConnect.executePreparedInsertQuery(Query.registerUser, new ArrayList<String>(
+                    Arrays.asList(enterEmail.getText(), enterF.getText() + " " + enterI.getText() + " " + enterO.getText())));
+            DBConnect.executePreparedInsertQuery(Query.registerAuthorizationData, new ArrayList<String>(
+                    Arrays.asList(enterEmail.getText(),PasswordHashing.hashPassword(enterPassword.getText()))));
+            MyAlert alert = new MyAlert("Регистрация прошла успешно!");
+            HelloApplication.changeMainPage("auth.fxml", new AuthController());
+        } else {
+            String s = "Следующие данные неверны: ";
+            if (!isName) {
+                s += "-ФИО ";
+            }
+            if (!isPassword) {
+                s += "-Пароль ";
+            }
+            if (!isPhone) {
+                s += "-Номер телефона ";
+            }
+            if (!isEmail) {
+                s += "-email ";
+            }
+            MyAlert alert = new MyAlert(s);
+        }
     }
 
     @FXML
     void goToAuthorizationPage(ActionEvent event) {
-
+        HelloApplication.changeMainPage("auth.fxml", new AuthController());
     }
 
-    @FXML
-    void repeatPassword(ActionEvent event) {
-
-    }
     @FXML
     public void initialize() {
+        Regex.addListenerFormatter(enterEmail, Regex.getCheckLog());
+        Regex.addListenerFormatter(enterF, Regex.getCheck_name());
+        Regex.addListenerFormatter(enterI, Regex.getCheck_name());
+        Regex.addListenerFormatter(enterO, Regex.getCheck_name());
+        Regex.addListenerFormatter(enterPassword, Regex.getCheckPsw());
+        Regex.addListenerFormatter(repeatPassword, enterPassword.getText());
+        Regex.addListenerFormatter(enterPhoneNumber, Regex.checkPhone);
     }
 }
 

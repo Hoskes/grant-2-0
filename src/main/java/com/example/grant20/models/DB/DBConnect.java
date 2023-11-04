@@ -10,7 +10,7 @@ public class DBConnect {
     private DBConnect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://std-mysql.ist.mospolytech.ru:3306/std_2260_dbgrant2", "std_2260_dbgrant2", "9999Send");
+            connection = DriverManager.getConnection("jdbc:mysql://std-mysql.ist.mospolytech.ru:3306/std_2260_dbgrant2v1", "std_2260_dbgrant2v1", "9999Send");
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
@@ -46,6 +46,18 @@ public class DBConnect {
                 query.setString(i+1, parameters.get(i));
             }
             return  query.executeQuery();
+        }catch (SQLException e){
+            System.out.println("Parametrized Query Error");
+            throw new RuntimeException(e);
+        }
+    }
+    public static void executePreparedInsertQuery(String queryString, ArrayList<String> parameters){
+        try {
+            PreparedStatement query = DBConnect.getDBConnect().getConnection().prepareStatement(queryString);
+            for (int i = 0; i < parameters.size(); i++) {
+                query.setString(i+1, parameters.get(i));
+            }
+            query.executeUpdate();
         }catch (SQLException e){
             System.out.println("Parametrized Query Error");
             throw new RuntimeException(e);

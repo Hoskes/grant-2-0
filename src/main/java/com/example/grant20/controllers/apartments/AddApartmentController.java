@@ -9,6 +9,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.sql.ResultSet;
+
 public class AddApartmentController {
     Apartment currentObject;
     ApartmentController toPage;

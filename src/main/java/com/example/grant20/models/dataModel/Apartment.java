@@ -34,6 +34,7 @@ public class Apartment {
         this.entrance = resultSet.getInt(7);
         this.floor = resultSet.getInt(8);
         this.statusSale = resultSet.getString(9);
+
     }
 
     public int getId() {
