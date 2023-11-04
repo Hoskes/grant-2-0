@@ -1,7 +1,12 @@
-package com.example.grant20.controllers;
+package com.example.grant20.controllers.profile;
 
 import com.example.grant20.HelloApplication;
-import com.example.grant20.models.*;
+import com.example.grant20.controllers.MainController;
+import com.example.grant20.models.dataModel.User;
+import com.example.grant20.models.DB.DBConnect;
+import com.example.grant20.models.features.PasswordHashing;
+import com.example.grant20.models.DB.Query;
+import com.example.grant20.models.features.Regex;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -54,12 +59,11 @@ public class AuthController {
     }
 
 
-
     @FXML
     void enter(ActionEvent event) {
         if (Regex.checkName(log.getText(), Regex.getCheckLog()) & Regex.checkName(psw.getText(), Regex.getCheckPsw())) {
             try {
-                ResultSet resultSet = DBConnect.executePreparedQuery(Query.checkAuth,new ArrayList<String>(Arrays.asList(log.getText(),PasswordHashing.hashPassword(psw.getText()))));
+                ResultSet resultSet = DBConnect.executePreparedQuery(Query.checkAuth, new ArrayList<String>(Arrays.asList(log.getText(), PasswordHashing.hashPassword(psw.getText()))));
                 if (resultSet.next()) {//при ненулевом результате
                     if (resultSet.getString(1).equals("1")) {
                         profile = new User(log.getText());
@@ -81,7 +85,7 @@ public class AuthController {
 
     @FXML
     void register(ActionEvent event) {
-        HelloApplication.changeMainPage("reg.fxml");
+        HelloApplication.changeMainPage("reg.fxml", new RegisterController());
     }
 
 }

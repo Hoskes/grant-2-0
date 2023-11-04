@@ -1,15 +1,20 @@
-package com.example.grant20.controllers;
+package com.example.grant20.controllers.houses;
 
 import com.example.grant20.HelloApplication;
+import com.example.grant20.controllers.MainController;
 import com.example.grant20.models.*;
+import com.example.grant20.models.dataModel.House;
+import com.example.grant20.models.dataModel.User;
+import com.example.grant20.models.DB.DBConnect;
+import com.example.grant20.models.DB.Query;
+import com.example.grant20.models.features.TableFilterGenerator;
+import com.example.grant20.models.features.TableViewGenerator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 import java.sql.ResultSet;
@@ -17,6 +22,7 @@ import java.sql.SQLException;
 
 public class HouseController {
     private User profile;
+    TableView<House> table;
 
     @FXML
     private AnchorPane pane;
@@ -30,30 +36,36 @@ public class HouseController {
     private Button deleteHouseButton;
 
     @FXML
-    private ChoiceBox<?> filterComplex;
-
-    @FXML
-    private ChoiceBox<?> filterStreet;
-
-    @FXML
-    private Button filterTableButton;
-
-    @FXML
     private Button goBackButton;
 
     @FXML
-    void changeHouse(ActionEvent event) {
+    private TextField insertAddress;
 
+    @FXML
+    private TextField insertAddressNum;
+
+    @FXML
+    private TextField insertHouseComplex;
+
+    @FXML
+    void changeHouse(ActionEvent event) {
+        System.out.println(table.getSelectionModel().getSelectedItem().getComplexName());
     }
 
     @FXML
     void createHouse(ActionEvent event) {
-
+        System.out.println(table.getSelectionModel().getSelectedItem());
+        HelloApplication.changeMainPage("add_change_house.fxml",new AddHouseController());
     }
 
     @FXML
     void deleteHouse(ActionEvent event) {
-
+        MyAlert alert = new MyAlert("Вы действительно хотите удалить эту запись");
+        if (alert.getAlert() == ButtonType.YES) {
+            House deletedItem = table.getSelectionModel().getSelectedItem();
+            table.getItems().remove(deletedItem);
+            //удалить строчку из таблицы
+        }
     }
 
     @FXML
@@ -76,10 +88,14 @@ public class HouseController {
 
         TableView<House> housesTable = new TableViewGenerator(House.class, filteredItems).getTable();
         pane.getChildren().add(housesTable);
-        for (House a:items) {
-            System.out.println(a.getId());
-
-        }
+        table = housesTable;
+        TableFilterGenerator<House> filter = new TableFilterGenerator<>(table,filteredItems);
+        filter.addNewEqualsFilter(insertAddress,"street");
+        filter.setFiltersToTable();
+        TableFilterGenerator<House> filter2 = new TableFilterGenerator<>(table,filteredItems);
+        filter2.addNewEqualsFilter(insertHouseComplex,"complexName");
+        filter2.addNewEqualsFilter(insertAddressNum,"number");
+        filter2.setFiltersToTable();
     }
 
     @FXML

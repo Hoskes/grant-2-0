@@ -1,4 +1,4 @@
-package com.example.grant20.models;
+package com.example.grant20.models.features;
 
 import javafx.scene.control.TextField;
 

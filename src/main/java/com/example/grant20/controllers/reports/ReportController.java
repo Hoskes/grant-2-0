@@ -1,7 +1,12 @@
-package com.example.grant20.controllers;
+package com.example.grant20.controllers.reports;
 
 import com.example.grant20.HelloApplication;
-import com.example.grant20.models.*;
+import com.example.grant20.controllers.MainController;
+import com.example.grant20.models.dataModel.Report;
+import com.example.grant20.models.dataModel.User;
+import com.example.grant20.models.DB.DBConnect;
+import com.example.grant20.models.DB.Query;
+import com.example.grant20.models.features.TableViewGenerator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -15,6 +20,10 @@ import java.sql.SQLException;
 
 public class ReportController {
     User profile;
+    @FXML
+    AnchorPane pane;
+    @FXML
+    TableView<Report> table;
     @FXML
     private Label ThisISCommentDeleteLater;
 
@@ -38,12 +47,6 @@ public class ReportController {
 
     @FXML
     private Button createReportButton;
-
-    @FXML
-    private ChoiceBox<?> filterComplexes;
-
-    @FXML
-    private ChoiceBox<?> filterHouses;
 
     @FXML
     private Label finalLabel1;
@@ -88,12 +91,6 @@ public class ReportController {
     private Label summEstimatedCostSold;
 
     @FXML
-    private AnchorPane reportAnchor;
-
-    @FXML
-    TableView<Report> table;
-
-    @FXML
     void createReport(ActionEvent event) {
 
     }
@@ -113,6 +110,7 @@ public class ReportController {
 
     }
 
+
     @FXML
     public void initialize() {
         ResultSet resultSet = DBConnect.getDBConnect().executeQuery(Query.getReport);
@@ -128,7 +126,7 @@ public class ReportController {
         FilteredList<Report> filteredItems = new FilteredList<>(items, p->true);
         TableView<Report> reportTable = new TableViewGenerator<Report>(Report.class,filteredItems).getTable();
         table = reportTable;
-        reportAnchor.getChildren().add(reportTable);
+        pane.getChildren().add(reportTable);
     }
 
     @FXML

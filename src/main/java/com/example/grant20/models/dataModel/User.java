@@ -1,4 +1,7 @@
-package com.example.grant20.models;
+package com.example.grant20.models.dataModel;
+
+import com.example.grant20.models.DB.DBConnect;
+import com.example.grant20.models.DB.Query;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,4 +1,4 @@
-package com.example.grant20.models;
+package com.example.grant20.models.dataModel;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -6,6 +6,7 @@ import java.sql.SQLException;
 public class Apartment {
     int id;
     String houseName;
+    int apartmentNumber;
     String address;
     double area;
     int rooms;
@@ -26,12 +27,13 @@ public class Apartment {
     public Apartment(ResultSet resultSet) throws SQLException {
         this.id = resultSet.getInt(1);
         this.houseName = resultSet.getString(2);
-        this.address = resultSet.getString(3);
-        this.area = resultSet.getInt(4);
-        this.rooms = resultSet.getInt(5);
-        this.entrance = resultSet.getInt(6);
-        this.floor = resultSet.getInt(7);
-        this.statusSale = resultSet.getString(8);
+        this.apartmentNumber = resultSet.getInt(3);
+        this.address = resultSet.getString(4);
+        this.area = resultSet.getInt(5);
+        this.rooms = resultSet.getInt(6);
+        this.entrance = resultSet.getInt(7);
+        this.floor = resultSet.getInt(8);
+        this.statusSale = resultSet.getString(9);
     }
 
     public int getId() {
@@ -98,4 +100,11 @@ public class Apartment {
         this.statusSale = statusSale;
     }
 
+    public int getApartmentNumber() {
+        return apartmentNumber;
+    }
+
+    public void setApartmentNumber(int apartmentNumber) {
+        this.apartmentNumber = apartmentNumber;
+    }
 }

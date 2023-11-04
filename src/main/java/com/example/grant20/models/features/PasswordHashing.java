@@ -1,4 +1,4 @@
-package com.example.grant20.models;
+package com.example.grant20.models.features;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

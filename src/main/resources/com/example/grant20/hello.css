@@ -25,11 +25,11 @@
 }
 
 .button {
-    -fx-background-color: rgb(255, 156, 26);
-    -fx-text-fill: rgb(255, 255, 255);
-    -fx-font-family: "Tw Cen MT";
+    -fx-background-color: rgb(255, 255, 255);
     -fx-font-weight: bold;
-    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgb(255, 156, 26);
+    -fx-font-weight: bold;
     -fx-min-width: 150px;
     -fx-max-width:180px;
 

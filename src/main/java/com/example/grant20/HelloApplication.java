@@ -1,13 +1,9 @@
 package com.example.grant20;
 
-import com.example.grant20.models.PasswordHashing;
-import com.example.grant20.models.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
-import javafx.scene.control.TableView;
-import javafx.stage.Screen;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,7 +19,9 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         loader = fxmlLoader;
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        Image icon = new Image("file:src/main/resources/com/example/grant20/logoSmall.png");
+        stage.getIcons().add(icon);
+        stage.setTitle("Информационная система компании esoft");
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.setResizable(false);
@@ -36,7 +34,6 @@ public class HelloApplication extends Application {
     }
 
     public static void changeMainPage(String path) { //сменить текущую сцену
-        //changeMainPage("hello-view.fxml",new HelloController());
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(path));
         try {
             Stage stage = s;

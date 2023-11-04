@@ -1,16 +1,11 @@
-package com.example.grant20.models;
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+package com.example.grant20.models.DB;
 
 public class Query {
     public static final String checkAuth = "SELECT 1 FROM authentication WHERE mail=? AND password =?";
     public static final String createUser = "SELECT mail,name,role FROM employee WHERE mail=?";
     public static final String auth_log = "test@mail.ru";
     public static final String auth_psw = "Username1234!";
-    public static final String getApartments = "SELECT apartment.id, complex.name, CONCAT(\"ул. \", complex.street, \" д.\", house.number, \" кв.\", apartmentNumber) AS address,\n" +
+    public static final String getApartments = "SELECT apartment.id, complex.name, apartment.apartmentNumber, CONCAT(\"ул. \", complex.street, \" д.\", house.number, \" кв.\", apartmentNumber) AS address,\n" +
             "\t\tapartment.area, apartment.rooms, apartment.entrance, apartment.floor, apartment.statusSale\n" +
             "FROM apartment JOIN house ON apartment.houseID=house.id JOIN complex ON house.complexID=complex.id";
     public static final String getHouses = "SELECT house.id, complex.name, complex.street, IF(house.number IS NULL OR house.number = \"\", \"Без номера\", house.number) AS number, complex.statusConstruction, IF(sold_ap.sold IS NULL, 0, sold_ap.sold) AS sold_apartments, IF(not_sold_ap.not_sold IS NULL, 0, not_sold_ap.not_sold) AS not_sold_apartments\n" +

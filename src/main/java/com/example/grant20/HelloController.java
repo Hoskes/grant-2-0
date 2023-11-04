@@ -1,7 +1,7 @@
 package com.example.grant20;
 
-import com.example.grant20.controllers.AuthController;
-import com.example.grant20.models.DBConnect;
+import com.example.grant20.controllers.profile.AuthController;
+import com.example.grant20.models.DB.DBConnect;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 

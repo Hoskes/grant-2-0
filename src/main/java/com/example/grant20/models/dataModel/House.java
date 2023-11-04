@@ -1,4 +1,4 @@
-package com.example.grant20.models;
+package com.example.grant20.models.dataModel;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

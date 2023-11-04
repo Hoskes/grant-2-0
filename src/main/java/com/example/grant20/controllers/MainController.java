@@ -1,7 +1,11 @@
 package com.example.grant20.controllers;
 
 import com.example.grant20.HelloApplication;
-import com.example.grant20.models.User;
+import com.example.grant20.controllers.apartments.ApartmentController;
+import com.example.grant20.controllers.complexes.ComplexController;
+import com.example.grant20.controllers.houses.HouseController;
+import com.example.grant20.controllers.reports.ReportController;
+import com.example.grant20.models.dataModel.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -34,7 +38,7 @@ public class MainController{
     private Label labelFioAuthorizedPerson;
     @FXML
     void setUserName(User user) {
-        labelFioAuthorizedPerson.setText(user.getName());
+        labelFioAuthorizedPerson.setText(labelFioAuthorizedPerson.getText()+"\n"+user.getName());
     }
     @FXML
     private Button openProfileButton;

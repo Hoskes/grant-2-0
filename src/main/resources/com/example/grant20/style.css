@@ -3,6 +3,7 @@
 }
 .text{
     -fx-text-fill: rgb(55, 71, 79);
+    -fx-font-family: "Arial";
 }
 
 .text.bold {
@@ -14,17 +15,15 @@
 }
 
 .button {
-    -fx-background-color: rgb(255, 156, 26);
-    -fx-text-fill: rgb(255, 255, 255);
-    -fx-font-family: "Tw Cen MT";
+    -fx-background-color: rgb(255, 255, 255);
     -fx-font-weight: bold;
-    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgb(255, 156, 26);
 }
 
 .text-field, .password-field {
     -fx-background-color: rgb(255, 255, 255);
     -fx-border-color: rgb(55, 71, 79);
-    -fx-font-family: "Tw Cen MT";
     -fx-prompt-text-fill: rgb(120, 144, 156);
     -fx-border-radius: 10;
 }
