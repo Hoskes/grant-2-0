@@ -1,11 +1,9 @@
 package com.example.grant20.controllers.houses;
 
 import com.example.grant20.HelloApplication;
-import com.example.grant20.controllers.apartments.ApartmentController;
 import com.example.grant20.models.DB.DBConnect;
 import com.example.grant20.models.DB.Query;
 import com.example.grant20.models.MyAlert;
-import com.example.grant20.models.dataModel.Apartment;
 import com.example.grant20.models.dataModel.House;
 import com.example.grant20.models.features.Regex;
 import javafx.beans.value.ChangeListener;
@@ -98,22 +96,39 @@ public class AddHouseController {
         }
         if (enterAddedValue.getText().matches(Regex.checkPositiveNumbers)
                 & enterBuildingCost.getText().matches(Regex.checkPositiveNumbers)) {
-            DBConnect.executePreparedInsertQuery(Query.insertHouse, new ArrayList<String>(
-                    Arrays.asList(
-                            enterNumber.getText(),
-                            enterAddedValue.getText(),
-                            enterBuildingCost.getText(),
-                            enterStreet.getSelectionModel().getSelectedItem(),
-                            chooseComplex.getValue())));
+            if (currentHouse == null) {
+                DBConnect.executePreparedInsert(Query.insertHouse, new ArrayList<String>(
+                        Arrays.asList(
+                                enterNumber.getText(),
+                                enterAddedValue.getText(),
+                                enterBuildingCost.getText(),
+                                enterStreet.getSelectionModel().getSelectedItem(),
+                                chooseComplex.getValue())));
+            } else {
+                DBConnect.executePreparedModificationQuery(Query.updateHouseById, new ArrayList<String>(
+                        Arrays.asList(
+                                enterNumber.getText(),
+                                enterAddedValue.getText(),
+                                enterBuildingCost.getText(),
+                                enterStreet.getSelectionModel().getSelectedItem(),
+                                chooseComplex.getValue(),
+                                currentHouse.getId()+""
+                        )));
+                currentHouse.setNumber(enterNumber.getText());
+                currentHouse.setAddedValue(enterAddedValue.getText());
+                currentHouse.setBuildingCost(enterBuildingCost.getText());
+                currentHouse.setStreet(enterStreet.getSelectionModel().getSelectedItem());
+                currentHouse.setComplexName(chooseComplex.getValue());
+            }
             MyAlert alert = new MyAlert("Запись успешно изменена");
-            HelloApplication.changeMainPage("auth.fxml", toPage);
+            HelloApplication.changeMainPage("houses.fxml", toPage);
         }
 
     }
 
     @FXML
     public void initialize() {
-        ResultSet complexes = DBConnect.getDBConnect().executeQuery(Query.getComplexNames);
+        ResultSet complexes = DBConnect.getDBConnect().executeSelect(Query.getComplexNames);
         ObservableList<String> complexChoice = FXCollections.observableArrayList();
         ObservableList<String> streetChoice = FXCollections.observableArrayList();
         try {
@@ -130,7 +145,7 @@ public class AddHouseController {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 ObservableList<String> streetChoice = FXCollections.observableArrayList();
-                ResultSet complexes = DBConnect.executePreparedQuery(Query.getStreetNamesWhereComplex,new ArrayList<>(Arrays.asList(chooseComplex.getSelectionModel().getSelectedItem())));
+                ResultSet complexes = DBConnect.executePreparedSelect(Query.getStreetNamesWhereComplex, new ArrayList<>(Arrays.asList(chooseComplex.getSelectionModel().getSelectedItem())));
                 try {
                     while (complexes.next()) {
                         streetChoice.add(complexes.getString(2));

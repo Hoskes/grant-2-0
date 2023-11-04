@@ -27,7 +27,7 @@ public class DBConnect {
         return connection;
     }
 
-    public ResultSet executeQuery(String query) {
+    public ResultSet executeSelect(String query) {
         Statement statement = null;
         try {
             statement = getConnection().createStatement();
@@ -39,7 +39,7 @@ public class DBConnect {
             throw new RuntimeException(e);
         }
     }
-    public static ResultSet executePreparedQuery(String queryString, ArrayList<String> parameters){
+    public static ResultSet executePreparedSelect(String queryString, ArrayList<String> parameters){
         try {
             PreparedStatement query = DBConnect.getDBConnect().getConnection().prepareStatement(queryString);
             for (int i = 0; i < parameters.size(); i++) {
@@ -51,7 +51,7 @@ public class DBConnect {
             throw new RuntimeException(e);
         }
     }
-    public static void executePreparedInsertQuery(String queryString, ArrayList<String> parameters){
+    public static void executePreparedInsert(String queryString, ArrayList<String> parameters){
         try {
             PreparedStatement query = DBConnect.getDBConnect().getConnection().prepareStatement(queryString);
             for (int i = 0; i < parameters.size(); i++) {
@@ -63,6 +63,22 @@ public class DBConnect {
             throw new RuntimeException(e);
         }
     }
+    public static void executePreparedModificationQuery(String queryString, ArrayList<String> parameters){
+        try {
+            PreparedStatement query = DBConnect.getDBConnect().getConnection().prepareStatement(queryString);
+            for (int i = 0; i < parameters.size(); i++) {
+                query.setString(i+1, parameters.get(i));
+            }
+            int deletedRows = query.executeUpdate();
+            if(deletedRows>0){
+                System.out.println("Success");
+            }
+        }catch (SQLException e){
+            System.out.println("Parametrized Query Error");
+            throw new RuntimeException(e);
+        }
+    }
+
 }
 
 

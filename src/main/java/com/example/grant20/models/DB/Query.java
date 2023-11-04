@@ -8,6 +8,14 @@ public class Query {
     public static final String registerUser = "INSERT INTO employee(mail,name,role)\n" +
             "VALUES\n" +
             "(?,?,1);\n";
+    public static final String deleteHouseById = "DELETE FROM `house` WHERE id=?";
+    public static final String deleteApartmentById = "DELETE FROM `apartment` WHERE id=?";
+    public static final String updateHouseById = "UPDATE `house` \n" +
+            "SET `number`=?,\n" +
+            "`addedValue`=?,\n" +
+            "`buildingCosts`=?,\n" +
+            "`complexID`=(SELECT id FROM complex WHERE street = ? AND name = ?) \n" +
+            "WHERE id=?;";
     public static final String registerAuthorizationData  = "INSERT INTO authentication(mail,password)\n" +
             "VALUES (?,?);";
     public static final String insertHouse = "INSERT INTO `house`(`number`, `addedValue`, `buildingCosts`, `complexID`)\n" +

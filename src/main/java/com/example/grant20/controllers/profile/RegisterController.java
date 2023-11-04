@@ -74,9 +74,9 @@ public class RegisterController {
         boolean isPhone = enterPhoneNumber.getText().matches(Regex.checkPhone);
         if (isName & isPassword & isEmail & isPhone) {
             //запрос к БД
-            DBConnect.executePreparedInsertQuery(Query.registerUser, new ArrayList<String>(
+            DBConnect.executePreparedInsert(Query.registerUser, new ArrayList<String>(
                     Arrays.asList(enterEmail.getText(), enterF.getText() + " " + enterI.getText() + " " + enterO.getText())));
-            DBConnect.executePreparedInsertQuery(Query.registerAuthorizationData, new ArrayList<String>(
+            DBConnect.executePreparedInsert(Query.registerAuthorizationData, new ArrayList<String>(
                     Arrays.asList(enterEmail.getText(),PasswordHashing.hashPassword(enterPassword.getText()))));
             MyAlert alert = new MyAlert("Регистрация прошла успешно!");
             HelloApplication.changeMainPage("auth.fxml", new AuthController());

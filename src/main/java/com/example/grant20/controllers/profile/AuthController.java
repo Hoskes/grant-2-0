@@ -63,7 +63,7 @@ public class AuthController {
     void enter(ActionEvent event) {
         if (Regex.checkName(log.getText(), Regex.getCheckLog()) & Regex.checkName(psw.getText(), Regex.getCheckPsw())) {
             try {
-                ResultSet resultSet = DBConnect.executePreparedQuery(Query.checkAuth, new ArrayList<String>(Arrays.asList(log.getText(), PasswordHashing.hashPassword(psw.getText()))));
+                ResultSet resultSet = DBConnect.executePreparedSelect(Query.checkAuth, new ArrayList<String>(Arrays.asList(log.getText(), PasswordHashing.hashPassword(psw.getText()))));
                 if (resultSet.next()) {//при ненулевом результате
                     if (resultSet.getString(1).equals("1")) {
                         profile = new User(log.getText());

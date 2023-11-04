@@ -113,7 +113,7 @@ public class ReportController {
 
     @FXML
     public void initialize() {
-        ResultSet resultSet = DBConnect.getDBConnect().executeQuery(Query.getReport);
+        ResultSet resultSet = DBConnect.getDBConnect().executeSelect(Query.getReport);
         ObservableList<Report> items = FXCollections.observableArrayList();
         try {
             while (resultSet.next()) {

@@ -2,6 +2,8 @@ package com.example.grant20.controllers.apartments;
 
 import com.example.grant20.HelloApplication;
 import com.example.grant20.models.dataModel.Apartment;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.sql.ResultSet;
+import java.util.Arrays;
 
 public class AddApartmentController {
     Apartment currentObject;
@@ -135,20 +138,10 @@ public class AddApartmentController {
             enterEntrance.setText(""+currentObject.getEntrance());
             enterRooms.setText(""+currentObject.getRooms());
             enterNumber.setText(""+currentObject.getApartmentNumber());
-
-//            addedValueLabel;
-//            areaLabel;
-//            buildingCostLabel;
-//            entranceLabel;
-//            floorLabel;
-//            goBackButton;
-//            houseLabel;
-//            numberLabel;
-//            roomsLabel;
-//            houseLabel;
-//            numberLabel;
-//            roomsLabel;
         }
+        ObservableList statusList = FXCollections.observableArrayList(Arrays.asList("ready","sold"));
+        chooseStatus.setItems(statusList);
+        
     }
 }
 

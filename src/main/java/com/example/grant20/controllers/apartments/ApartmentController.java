@@ -4,6 +4,7 @@ import com.example.grant20.HelloApplication;
 import com.example.grant20.controllers.MainController;
 import com.example.grant20.models.*;
 import com.example.grant20.models.dataModel.Apartment;
+import com.example.grant20.models.dataModel.House;
 import com.example.grant20.models.dataModel.User;
 import com.example.grant20.models.DB.DBConnect;
 import com.example.grant20.models.DB.Query;
@@ -21,6 +22,8 @@ import javafx.scene.layout.AnchorPane;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ApartmentController {
     User profile;
@@ -89,8 +92,10 @@ public class ApartmentController {
     void deleteApartment(ActionEvent event) {
         MyAlert alert = new MyAlert("Вы действительно хотите удалить запись №"+selected.getId()+"?");
         if (alert.getAlert() == ButtonType.YES) {
-            table.getItems().remove(selected);
-            //удалить строчку из таблицы
+            ArrayList<Apartment> bufList = new ArrayList<>(table.getItems().stream().toList());
+            bufList.remove(selected);
+            table.setItems(FXCollections.observableArrayList(bufList));
+            DBConnect.executePreparedModificationQuery(Query.deleteApartmentById, new ArrayList(Arrays.asList(selected.getId()+"")));
         }
     }
     @FXML
@@ -100,7 +105,7 @@ public class ApartmentController {
 
     @FXML
     public void initialize() {
-        ResultSet resultSet = DBConnect.getDBConnect().executeQuery(Query.getApartments);
+        ResultSet resultSet = DBConnect.getDBConnect().executeSelect(Query.getApartments);
         ObservableList<Apartment> items = FXCollections.observableArrayList();
         try {
             while (resultSet.next()) {

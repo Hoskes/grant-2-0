@@ -106,7 +106,7 @@ public class ComplexController {
 
     @FXML
     public void initialize() {
-        ResultSet resultSet = DBConnect.getDBConnect().executeQuery(Query.getComplexes);
+        ResultSet resultSet = DBConnect.getDBConnect().executeSelect(Query.getComplexes);
         ObservableList<Complex> items = FXCollections.observableArrayList();
         try {
             while (resultSet.next()) {
