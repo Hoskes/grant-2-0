@@ -5,10 +5,10 @@ import java.sql.SQLException;
 
 public class House {
     int id;
-    String number;
-    String status;
     String complexName;
     String street;
+    String number;
+    String status;
     int count_sold;
     int count_not_sold;
     String addedValue;

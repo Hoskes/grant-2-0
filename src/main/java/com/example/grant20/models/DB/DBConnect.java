@@ -1,5 +1,8 @@
 package com.example.grant20.models.DB;
 
+import com.example.grant20.HelloApplication;
+import com.example.grant20.models.MyAlert;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -12,6 +15,7 @@ public class DBConnect {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://std-mysql.ist.mospolytech.ru:3306/std_2260_dbgrant2v1", "std_2260_dbgrant2v1", "9999Send");
         } catch (ClassNotFoundException | SQLException e) {
+            MyAlert alert = new MyAlert("Ошибка соединения! пожалуйста перезапустите приложение");
             throw new RuntimeException(e);
         }
     }
@@ -47,6 +51,7 @@ public class DBConnect {
             }
             return  query.executeQuery();
         }catch (SQLException e){
+            MyAlert alert = new MyAlert("Ошибка в заполнении данных! Пожалуйства проверьте корректность заполненных вами значений");
             System.out.println("Parametrized Query Error");
             throw new RuntimeException(e);
         }
@@ -59,6 +64,7 @@ public class DBConnect {
             }
             query.executeUpdate();
         }catch (SQLException e){
+            MyAlert alert = new MyAlert("Ошибка в заполнении данных! Пожалуйства проверьте корректность заполненных вами значений");
             System.out.println("Parametrized Query Error");
             throw new RuntimeException(e);
         }
@@ -74,6 +80,7 @@ public class DBConnect {
                 System.out.println("Success");
             }
         }catch (SQLException e){
+            MyAlert alert = new MyAlert("Ошибка в заполнении данных! Пожалуйства проверьте корректность заполненных вами значений");
             System.out.println("Parametrized Query Error");
             throw new RuntimeException(e);
         }

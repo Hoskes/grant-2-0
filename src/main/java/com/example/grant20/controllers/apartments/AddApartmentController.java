@@ -184,6 +184,7 @@ public class AddApartmentController {
             MyAlert alert = new MyAlert("Запись успешно изменена");
             HelloApplication.changeMainPage("apartments.fxml", toPage);
         }
+        MyAlert alert = new MyAlert("Ошибка в заполнении данных! Пожалуйства проверьте корректность заполненных вами значений");
 
     }
 

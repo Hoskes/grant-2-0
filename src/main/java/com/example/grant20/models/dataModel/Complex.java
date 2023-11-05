@@ -10,6 +10,9 @@ public class Complex {
     String status;
     int house_count;
     String city;
+    String street;
+    String addedValue;
+    String buildingCosts;
 
     public Complex(int id, String name, String status, int house_count, String city) {
         this.id = id;
@@ -25,6 +28,33 @@ public class Complex {
         this.status = resultSet.getString(3);
         this.house_count = resultSet.getInt(4);
         this.city = resultSet.getString(5);
+        this.street = resultSet.getString(6);
+        this.addedValue = resultSet.getString(7);
+        this.buildingCosts = resultSet.getString(8);
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getAddedValue() {
+        return addedValue;
+    }
+
+    public void setAddedValue(String addedValue) {
+        this.addedValue = addedValue;
+    }
+
+    public String getBuildingCosts() {
+        return buildingCosts;
+    }
+
+    public void setBuildingCosts(String buildingCosts) {
+        this.buildingCosts = buildingCosts;
     }
 
     public int getId() {
