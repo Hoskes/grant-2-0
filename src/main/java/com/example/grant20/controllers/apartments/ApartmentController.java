@@ -90,12 +90,14 @@ public class ApartmentController {
     }
     @FXML
     void deleteApartment(ActionEvent event) {
-        MyAlert alert = new MyAlert("Вы действительно хотите удалить запись №"+selected.getId()+"?");
-        if (alert.getAlert() == ButtonType.YES) {
-            ArrayList<Apartment> bufList = new ArrayList<>(table.getItems().stream().toList());
-            bufList.remove(selected);
-            table.setItems(FXCollections.observableArrayList(bufList));
-            DBConnect.executePreparedModificationQuery(Query.deleteApartmentById, new ArrayList(Arrays.asList(selected.getId()+"")));
+        if (selected!=null) {
+            MyAlert alert = new MyAlert("Вы действительно хотите удалить запись №" + selected.getId() + "?");
+            if (alert.getAlert() == ButtonType.YES) {
+                ArrayList<Apartment> bufList = new ArrayList<>(table.getItems().stream().toList());
+                bufList.remove(selected);
+                table.setItems(FXCollections.observableArrayList(bufList));
+                DBConnect.executePreparedModificationQuery(Query.deleteApartmentById, new ArrayList(Arrays.asList(selected.getId() + "")));
+            }
         }
     }
     @FXML
@@ -117,7 +119,7 @@ public class ApartmentController {
         }
         FilteredList<Apartment> filteredItems = new FilteredList<>(items,p->true);
 
-        TableView<Apartment> apartmentTable = new TableViewGenerator<Apartment>(Apartment.class,filteredItems).getTable();
+        TableView<Apartment> apartmentTable = new TableViewGenerator<Apartment>(Apartment.class,filteredItems,0,10).getTable();
         table = apartmentTable;
         list = table.getItems();
         FilteredList<Apartment> mainlist = new FilteredList(list);
@@ -146,7 +148,7 @@ public class ApartmentController {
                 int fromIndex = Math.min(pagination.getCurrentPageIndex() * 20, table.getItems().size());
                 int toIndex = Math.min(fromIndex + 20, table.getItems().size());
                 FilteredList<Apartment> list2 = new FilteredList<>(FXCollections.observableArrayList(table.getItems().subList(fromIndex,toIndex)));
-                TableView<Apartment> table2 = new TableViewGenerator<>(Apartment.class,list2).getTable();
+                TableView<Apartment> table2 = new TableViewGenerator<>(Apartment.class,list2,0,10).getTable();
                 table2.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> selected = newValue);
                 return table2;
             }
@@ -159,7 +161,7 @@ public class ApartmentController {
         int fromIndex = Math.min(pagination.getCurrentPageIndex() * 20, table.getItems().size());
         int toIndex = Math.min(fromIndex + 20, table.getItems().size());
         FilteredList<Apartment> list2 = new FilteredList<>(FXCollections.observableArrayList(table.getItems().subList(fromIndex, toIndex)));
-        TableView<Apartment> table2 = new TableViewGenerator<>(Apartment.class, list2).getTable();
+        TableView<Apartment> table2 = new TableViewGenerator<>(Apartment.class, list2,0,10).getTable();
         table2.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> selected = newValue);
         return table2;
     }

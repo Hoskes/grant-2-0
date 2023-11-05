@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Regex {
     private static final String check_name = "[[A-Z][a-z]+|[А-Я][а-я]+]{2,50}";
     public static final String checkPositiveNumbers = "0|([1-9]+[0-9]*)";
+    public static final String checkPositiveDecimalNumbers = "0|([1-9]+[0-9]*)";
     public static final String checkPhone ="^\\+7\\(\\d{3}\\)\\d{3}-\\d{2}-\\d{2}$";
     private static final String check_log = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
     private static final String check_psw = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
@@ -38,7 +39,7 @@ public class Regex {
     public static void main(String[] args) {
         Scanner t = new Scanner(System.in);
         while (true){
-            System.out.println(t.nextLine().matches(checkPhone));
+            System.out.println(t.nextLine().matches("(\\d+.\\d+)?"));
         }
     }
 }
