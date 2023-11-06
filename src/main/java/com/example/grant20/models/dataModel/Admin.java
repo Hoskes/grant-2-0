@@ -2,7 +2,6 @@ package com.example.grant20.models.dataModel;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class Admin {
     String mail;
@@ -27,12 +26,6 @@ public class Admin {
             throw new RuntimeException(e);
         }
     }
-
-//    public ArrayList<String> getMailArr() {
-//        ArrayList<String> mail = new ArrayList<>();
-//        mail.add(this.mail);
-//        return mail;
-//    }
 
     public String getMail() {
         return mail;

@@ -5,6 +5,7 @@ import com.example.grant20.controllers.admin.AdminController;
 import com.example.grant20.controllers.apartments.ApartmentController;
 import com.example.grant20.controllers.complexes.ComplexController;
 import com.example.grant20.controllers.houses.HouseController;
+import com.example.grant20.controllers.profile.ProfileController;
 import com.example.grant20.controllers.reports.ReportController;
 import com.example.grant20.models.dataModel.User;
 import javafx.event.ActionEvent;
@@ -74,7 +75,7 @@ public class MainController{
 
     @FXML
     void openProfile(ActionEvent event) {
-        ///
+        HelloApplication.changeMainPage("profile.fxml",new ProfileController(profile));
     }
 
     @FXML
@@ -90,6 +91,11 @@ public class MainController{
     @FXML
     public void initialize() {
         setUserName(profile);
+        if (profile.getRoleId() != 1)
+            openAdminButton.setVisible(false);
+        else {
+            openAdminButton.setVisible(true);
+        }
     }
     public MainController(User user){
         profile = user;

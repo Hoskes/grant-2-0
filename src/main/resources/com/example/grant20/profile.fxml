@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="423.0" prefWidth="774.0" stylesheets="@withTables.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="549.0" prefWidth="606.0">
+         <children>
+            <ImageView fitHeight="440.0" fitWidth="792.0" layoutX="-9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@backBig.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="saveChangesButton" layoutX="308.0" layoutY="374.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="26.0" prefWidth="157.0" text="Сохранить" />
+            <Button fx:id="goBackButton" layoutX="30.0" layoutY="374.0" mnemonicParsing="false" onAction="#goBackButton" prefHeight="26.0" prefWidth="70.0" text="Назад" />
+            <Text layoutX="337.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Профиль">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Label fx:id="labelF" layoutX="65.0" layoutY="64.0" text="Фамилия" />
+            <TextField fx:id="enterF" layoutX="65.0" layoutY="90.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="210.0" promptText="Иванов" />
+            <Label fx:id="labelPhoneNumber" layoutX="467.0" layoutY="72.0" text="Номер телефона" />
+            <TextField fx:id="enterEmail" layoutX="65.0" layoutY="279.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="210.0" promptText="example@gmail.com" />
+            <Label fx:id="labelPassword1" layoutX="467.0" layoutY="125.0" text="Пароль" />
+            <PasswordField fx:id="enterPassword" layoutX="468.0" layoutY="180.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="210.0" promptText="Example1!" />
+            <Label fx:id="labelEmail" layoutX="65.0" layoutY="257.0" prefHeight="18.0" prefWidth="51.0" text="Email" />
+            <Label fx:id="labelPassword2" layoutX="468.0" layoutY="213.0" text="Повторите пароль" />
+            <Label fx:id="labelI" layoutX="65.0" layoutY="132.0" text="Имя" />
+            <TextField fx:id="enterI" layoutX="65.0" layoutY="158.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="210.0" promptText="Иван" />
+            <Label fx:id="labelO" layoutX="64.0" layoutY="198.0" text="Отчество" />
+            <TextField fx:id="enterO" layoutX="65.0" layoutY="219.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="210.0" promptText="Иванович" />
+            <PasswordField fx:id="repeatPassword" layoutX="466.0" layoutY="233.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="210.0" />
+            <TextField fx:id="enterPhoneNumber" layoutX="468.0" layoutY="91.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="210.0" promptText="Телефон в формате +7(000)000-00-00">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </TextField>
+            <Text layoutX="468.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(не менее 6 символов, специального символа и строчной буквы)" wrappingWidth="218.8883056640625">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

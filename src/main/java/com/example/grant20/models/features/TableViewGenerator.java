@@ -26,7 +26,7 @@ public class TableViewGenerator<T> {
         }
         table.getItems().addAll(list);
         table.setLayoutX(20);
-        table.setLayoutY(20);
+        table.setLayoutY(50);
         table.setPrefHeight(350);
         table.setPrefWidth(700);
     }
@@ -42,7 +42,7 @@ public class TableViewGenerator<T> {
         }
         table.getItems().addAll(list);
         table.setLayoutX(20);
-        table.setLayoutY(20);
+        table.setLayoutY(50);
         table.setPrefHeight(350);
         table.setPrefWidth(700);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);

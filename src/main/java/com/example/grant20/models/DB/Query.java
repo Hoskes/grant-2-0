@@ -1,17 +1,17 @@
 package com.example.grant20.models.DB;
 
 public class Query {
-    public static final String checkAuth = "SELECT 1 FROM authentication WHERE mail=? AND password =?";
+    public static final String checkAuth = "SELECT 1 FROM authentication WHERE mail=? AND password =? AND `deleted` IS NULL";
     public static final String createUser = "SELECT mail,name,role FROM employee WHERE mail=?";
     public static final String auth_log = "test@mail.ru";
     public static final String auth_psw = "Username1234!";
     public static final String registerUser = "INSERT INTO employee(mail,name,role)\n" +
             "VALUES\n" +
             "(?,?,1);\n";
-    public static final String deleteComplexById = "DELETE FROM `complex` WHERE id =?";
-    public static final String deleteHouseById = "DELETE FROM `house` WHERE id=?";
-    public static final String deleteApartmentById = "DELETE FROM `apartment` WHERE id=?";
-    public static final String getPeople = "SELECT * FROM employee ORDER BY confirm";
+    public static final String deleteComplexById = "UPDATE `complex` SET `deleted` = 1 WHERE id =?";
+    public static final String deleteHouseById = "UPDATE `house` SET `deleted` = 1 WHERE id=?";
+    public static final String deleteApartmentById = "UPDATE `apartment` SET `deleted` = 1 WHERE id=?";
+    public static final String getPeople = "SELECT * FROM employee WHERE `deleted` IS NULL ORDER BY confirm ";
     public static final String updatePersonById = "UPDATE `employee` \n" +
                                                         "SET `confirm`=1\n" +
                                                         "WHERE `mail`=?;";
@@ -19,29 +19,29 @@ public class Query {
             "SET `number`=?,\n" +
             "`addedValue`=?,\n" +
             "`buildingCosts`=?,\n" +
-            "`complexID`=(SELECT id FROM complex WHERE street = ? AND name = ?) \n" +
+            "`complexID`=(SELECT id FROM complex WHERE street = ? AND name = ? AND `deleted` IS NULL) \n" +
             "WHERE id=?;";
     public static final String registerAuthorizationData  = "INSERT INTO authentication(mail,password)\n" +
             "VALUES (?,?);";
     public static final String checkSoldApartmentsOnComplex = "SELECT IF(\"sold\"=ANY(SELECT statusSale FROM complex JOIN " +
-            "house ON house.complexID=complex.id JOIN apartment ON apartment.houseID = house.id WHERE complexID = ?),1,0)";
+            "house ON house.complexID=complex.id JOIN apartment ON apartment.houseID = house.id WHERE complexID = ? AND apartment.deleted IS NULL AND house.deleted IS NULL AND complex.deleted IS NULL),1,0)";
     public static final String selectHouseList = "SELECT house.id, complex.name, complex.street, IF(house.number IS NULL OR " +
             "house.number = \"\", \"Без номера\", house.number) AS number, complex.statusConstruction, IF(sold_ap.sold IS NULL, 0, sold_ap.sold) " +
             "AS sold_apartments, IF(not_sold_ap.not_sold IS NULL, 0, not_sold_ap.not_sold) AS not_sold_apartments,\n" +
             "            house.addedValue, house.buildingCosts FROM house JOIN complex ON house.complexID=complex.id\n" +
             "                        LEFT JOIN (SELECT houseID, COUNT(id) AS sold\n" +
             "                              FROM apartment  \n" +
-            "                              WHERE statusSale = \"sold\"\n" +
+            "                              WHERE deleted IS NULL AND statusSale = \"sold\"\n" +
             "                              GROUP BY houseID) sold_ap ON house.id=sold_ap.houseID\n" +
             "                        LEFT JOIN (\n" +
             "                            SELECT houseID, COUNT(id) AS not_sold\n" +
             "                            FROM apartment\n" +
-            "                            WHERE statusSale = \"ready\"\n" +
+            "                            WHERE deleted IS NULL AND statusSale = \"ready\"\n" +
             "                            GROUP BY houseID\n" +
             "                            ) not_sold_ap ON house.id=not_sold_ap.houseID\n" +
-            "            WHERE complex.id = ? ORDER BY complex.name, complex.street, house.number;";
+            "            WHERE complex.deleted IS NULL AND complex.id = ? ORDER BY complex.name, complex.street, house.number;";
     public static final String insertHouse = "INSERT INTO `house`(`number`, `addedValue`, `buildingCosts`, `complexID`)\n" +
-            "VALUES (?, ?, ?, SELECT id FROM complex WHERE street = ? AND name = ?));";
+            "VALUES (?, ?, ?, SELECT id FROM complex WHERE street = ? AND name = ? AND deleted IS NULL));";
     public static final String insertComplex = "INSERT INTO `complex`\n" +
             "(`name`, `city`, `street`, `statusConstruction`, `addedValue`, `buildingCosts`) VALUES \n" +
             "(?,?,?,?,?,?);";
@@ -53,11 +53,11 @@ public class Query {
             "`addedValue`=?,\n" +
             "`buildingCosts`=? \n" +
             "WHERE id=?;";
-    public static final String getComplexNames = "SELECT DISTINCT name,street FROM complex";
-    public static final String getStreetNamesWhereComplex = "SELECT DISTINCT name,street FROM complex WHERE name=?";
+    public static final String getComplexNames = "SELECT DISTINCT name,street FROM complex AND deleted IS NULL";
+    public static final String getStreetNamesWhereComplex = "SELECT DISTINCT name,street FROM complex WHERE name=? AND deleted IS NULL";
     public static final String updateApartmentById = "UPDATE `apartment`\n" +
             "SET\n" +
-            "`houseID`= (SELECT house.id FROM house WHERE number=? AND complexID = (SELECT complex.id FROM complex WHERE name =? AND city =? AND street=?)),\n" +
+            "`houseID`= (SELECT house.id FROM house WHERE number=? AND deleted IS NULL AND complexID = (SELECT complex.id FROM complex WHERE name =? AND city =? AND street=? AND deleted IS NULL)),\n" +
             "`apartmentNumber`=?,\n" +
             "`area`=?,\n" +
             "`rooms`=?,\n" +
@@ -70,13 +70,14 @@ public class Query {
     public static final String getApartments = "SELECT apartment.id, complex.name, apartment.apartmentNumber, CONCAT(\"г. \",complex.city,\" ул. \", " +
             "complex.street, \" д.\", house.number, \" кв.\", apartmentNumber) AS address,\n" +
             "\t\tapartment.area, apartment.rooms, apartment.entrance, apartment.floor, apartment.statusSale, complex.id,apartment.cost,apartment.addedValue,apartment.houseID\n" +
-            "FROM apartment JOIN house ON apartment.houseID=house.id JOIN complex ON house.complexID=complex.id";
+            "FROM apartment JOIN house ON apartment.houseID=house.id JOIN complex ON house.complexID=complex.id\n" +
+            "WHERE apartment.deleted IS NULL AND house.deleted IS NULL AND complex.deleted IS NULL;";
     public static final String getConcatedApartmentAddressByHouse = "SELECT DISTINCT CONCAT('г. ',complex.city,' ул. ',complex.street,' д. ',house.number) as address " +
-            "FROM complex JOIN house ON house.complexID=complex.id WHERE complex.name =?;";
+            "FROM complex JOIN house ON house.complexID=complex.id WHERE complex.name =? AND complex.deleted IS NULL AND house.deleted IS NULL;";
     public static final String insertApartment = "INSERT INTO `apartment`" +
             "(`houseID`, `apartmentNumber`, `area`, `rooms`, `entrance`, `floor`, `statusSale`, `addedValue`, `cost`) \n" +
             "VALUES (" +
-            "(SELECT house.id FROM house WHERE number=? AND complexID = (SELECT complex.id FROM complex WHERE name =? AND city =? AND street=?)) ," +
+            "(SELECT house.id FROM house WHERE number=? AND deleted IS NULL AND complexID = (SELECT complex.id FROM complex WHERE name =? AND city =? AND street=? AND deleted IS NULL)) ," +
             "?,?,?,?,?,?,?,?);";
     public static final String getHouses = "SELECT house.id, complex.name, complex.street, IF(house.number IS NULL " +
             "OR house.number = \"\", \"Без номера\", house.number) AS number, complex.statusConstruction, IF(sold_ap.sold IS NULL, " +
@@ -85,14 +86,15 @@ public class Query {
             "FROM house JOIN complex ON house.complexID=complex.id\n" +
             "            LEFT JOIN (SELECT houseID, COUNT(id) AS sold\n" +
             "                  FROM apartment  \n" +
-            "                  WHERE statusSale = \"sold\"\n" +
+            "                  WHERE deleted IS NULL AND statusSale = \"sold\"\n" +
             "                  GROUP BY houseID) sold_ap ON house.id=sold_ap.houseID\n" +
             "            LEFT JOIN (\n" +
             "                SELECT houseID, COUNT(id) AS not_sold\n" +
             "                FROM apartment  \n" +
-            "                WHERE statusSale = \"ready\"\n" +
+            "                WHERE deleted IS NULL AND statusSale = \"ready\"\n" +
             "                GROUP BY houseID\n" +
             "                ) not_sold_ap ON house.id=not_sold_ap.houseID\n" +
+            "WHERE house.deleted IS NULL AND complex.deleted IS NULL\n" +
             "ORDER BY complex.name, complex.street, house.number;";
     public static final String getAllFromHouses = "SELECT house.id, complex.name, complex.street, IF(house.number IS NULL " +
             "OR house.number = \"\", \"Без номера\", house.number) AS number, complex.statusConstruction, IF(sold_ap.sold IS NULL, " +
@@ -100,34 +102,36 @@ public class Query {
             "house.addedValue, house.buildingCosts FROM house JOIN complex ON house.complexID=complex.id\n" +
             "            LEFT JOIN (SELECT houseID, COUNT(id) AS sold\n" +
             "                  FROM apartment  \n" +
-            "                  WHERE statusSale = \"sold\"\n" +
+            "                  WHERE deleted IS NULL AND statusSale = \"sold\"\n" +
             "                  GROUP BY houseID) sold_ap ON house.id=sold_ap.houseID\n" +
             "            LEFT JOIN (\n" +
             "                SELECT houseID, COUNT(id) AS not_sold\n" +
             "                FROM apartment  \n" +
-            "                WHERE statusSale = \"ready\"\n" +
+            "                WHERE deleted IS NULL AND statusSale = \"ready\"\n" +
             "                GROUP BY houseID\n" +
             "                ) not_sold_ap ON house.id=not_sold_ap.houseID\n" +
+            "WHERE house.deleted IS NULL AND complex.deleted IS NULL\n" +
             "ORDER BY complex.name, complex.street, house.number;";
     public static final String getComplexes = "SELECT complex.id, complex.name, complex.statusConstruction, " +
             "COUNT(house.id) AS house_count, complex.city,complex.street,complex.addedValue,complex.buildingCosts\n" +
             "FROM complex LEFT JOIN house ON complex.id=house.complexID\n" +
+            "WHERE house.deleted IS NULL AND complex.deleted IS NULL\n" +
             "GROUP BY complex.id\n" +
             "ORDER BY complex.city, complex.statusConstruction";
 
     public static final String getReport = "SELECT apartment.id AS apartmentId, apartment.apartmentNumber, apartment.area, apartment.rooms, apartment.statusSale, " +
             "apartment.addedValue AS apartmentAddedValue, house.id AS houseId, house.number AS houseNumber, house.addedValue AS houseAddedValue, house.buildingCosts AS houseBuildingCosts, complex.id AS complexId, " +
             "complex.name AS complexName, complex.addedValue AS complexAddedValue, complex.buildingCosts AS complexBuildingCosts,apartment.floor,apartment.cost\n" +
-            "FROM apartment JOIN house ON apartment.houseID=house.id JOIN complex ON house.complexID=complex.id;";
+            "FROM apartment JOIN house ON apartment.houseID=house.id JOIN complex ON house.complexID=complex.id WHERE apartment.deleted IS NULL AND house.deleted IS NULL AND complex.deleted IS NULL;";
 
     public static final String query1 = "SELECT apartment.id AS apartmentId, apartment.apartmentNumber, apartment.area, apartment.rooms, apartment.statusSale, " +
             "apartment.addedValue AS apartmentAddedValue, house.id AS houseId, house.number AS houseNumber, house.addedValue AS houseAddedValue, house.buildingCosts AS houseBuildingCosts, complex.id AS complexId, " +
             "complex.name AS complexName, complex.addedValue AS complexAddedValue, complex.buildingCosts AS complexBuildingCosts,apartment.floor,apartment.cost\n" +
-            "FROM apartment JOIN house ON apartment.houseID=house.id JOIN complex ON house.complexID=complex.id WHERE house.id=1;";
+            "FROM apartment JOIN house ON apartment.houseID=house.id JOIN complex ON house.complexID=complex.id WHERE house.id=1 AND apartment.deleted IS NULL AND house.deleted IS NULL AND complex.deleted IS NULL;";
 
     public static final String query2 = "SELECT apartment.id AS apartmentId, apartment.apartmentNumber, apartment.area, apartment.rooms, apartment.statusSale, " +
             "apartment.addedValue AS apartmentAddedValue, house.id AS houseId, house.number AS houseNumber, house.addedValue AS houseAddedValue, house.buildingCosts AS houseBuildingCosts, complex.id AS complexId, " +
             "complex.name AS complexName, complex.addedValue AS complexAddedValue, complex.buildingCosts AS complexBuildingCosts,apartment.floor,apartment.cost\n" +
-            "FROM apartment JOIN house ON apartment.houseID=house.id JOIN complex ON house.complexID=complex.id WHERE complex.id=2;";
+            "FROM apartment JOIN house ON apartment.houseID=house.id JOIN complex ON house.complexID=complex.id WHERE complex.id=2 AND apartment.deleted IS NULL AND house.deleted IS NULL AND complex.deleted IS NULL;";
 
 }
