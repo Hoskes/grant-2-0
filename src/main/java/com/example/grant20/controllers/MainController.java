@@ -5,7 +5,6 @@ import com.example.grant20.controllers.admin.AdminController;
 import com.example.grant20.controllers.apartments.ApartmentController;
 import com.example.grant20.controllers.complexes.ComplexController;
 import com.example.grant20.controllers.houses.HouseController;
-import com.example.grant20.controllers.profile.ProfileController;
 import com.example.grant20.controllers.reports.ReportController;
 import com.example.grant20.models.dataModel.User;
 import javafx.event.ActionEvent;
@@ -46,8 +45,6 @@ public class MainController{
     @FXML
     private Button openAdminButton;
 
-    @FXML
-    private Button openProfileButton;
 
     @FXML
     private Button reportButton;
@@ -71,11 +68,6 @@ public class MainController{
     @FXML
     void openHousesView(ActionEvent event) {
         HelloApplication.changeMainPage("houses.fxml",new HouseController(profile));
-    }
-
-    @FXML
-    void openProfile(ActionEvent event) {
-        HelloApplication.changeMainPage("profile.fxml",new ProfileController(profile));
     }
 
     @FXML

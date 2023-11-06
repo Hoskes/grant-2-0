@@ -1,20 +1,25 @@
 package com.example.grant20.models.DB;
 
 public class Query {
-    public static final String checkAuth = "SELECT 1 FROM authentication WHERE mail=? AND password =? AND `deleted` IS NULL";
+    public static final String checkAuth = "SELECT 1 FROM authentication JOIN employee USING(mail) WHERE mail=? AND password =? AND authentication.deleted IS NULL AND confirm = 1 AND employee.deleted IS NULL";
     public static final String createUser = "SELECT mail,name,role FROM employee WHERE mail=?";
     public static final String auth_log = "test@mail.ru";
     public static final String auth_psw = "Username1234!";
     public static final String registerUser = "INSERT INTO employee(mail,name,role)\n" +
             "VALUES\n" +
-            "(?,?,1);\n";
+            "(?,?,2);\n";
     public static final String deleteComplexById = "UPDATE `complex` SET `deleted` = 1 WHERE id =?";
     public static final String deleteHouseById = "UPDATE `house` SET `deleted` = 1 WHERE id=?";
     public static final String deleteApartmentById = "UPDATE `apartment` SET `deleted` = 1 WHERE id=?";
     public static final String getPeople = "SELECT * FROM employee WHERE `deleted` IS NULL ORDER BY confirm ";
-    public static final String updatePersonById = "UPDATE `employee` \n" +
+    public static final String updatePersonConfirm = "UPDATE `employee` \n" +
                                                         "SET `confirm`=1\n" +
                                                         "WHERE `mail`=?;";
+
+    public static final String updatePersonById = "UPDATE `employee` \n" +
+                                                        "SET `name`=? \n" +
+                                                        "WHERE `mail`=?;";
+    
     public static final String updateHouseById = "UPDATE `house` \n" +
             "SET `number`=?,\n" +
             "`addedValue`=?,\n" +
@@ -41,7 +46,7 @@ public class Query {
             "                            ) not_sold_ap ON house.id=not_sold_ap.houseID\n" +
             "            WHERE complex.deleted IS NULL AND complex.id = ? ORDER BY complex.name, complex.street, house.number;";
     public static final String insertHouse = "INSERT INTO `house`(`number`, `addedValue`, `buildingCosts`, `complexID`)\n" +
-            "VALUES (?, ?, ?, SELECT id FROM complex WHERE street = ? AND name = ? AND deleted IS NULL));";
+            "VALUES (?, ?, ?, (SELECT id FROM complex WHERE street = ? AND name = ?));";
     public static final String insertComplex = "INSERT INTO `complex`\n" +
             "(`name`, `city`, `street`, `statusConstruction`, `addedValue`, `buildingCosts`) VALUES \n" +
             "(?,?,?,?,?,?);";
@@ -53,11 +58,11 @@ public class Query {
             "`addedValue`=?,\n" +
             "`buildingCosts`=? \n" +
             "WHERE id=?;";
-    public static final String getComplexNames = "SELECT DISTINCT name,street FROM complex AND deleted IS NULL";
-    public static final String getStreetNamesWhereComplex = "SELECT DISTINCT name,street FROM complex WHERE name=? AND deleted IS NULL";
+    public static final String getComplexNames = "SELECT DISTINCT name,street FROM complex WHERE deleted IS NULL";
+    public static final String getStreetNamesWhereComplex = "SELECT DISTINCT name,street FROM complex WHERE name=?";
     public static final String updateApartmentById = "UPDATE `apartment`\n" +
             "SET\n" +
-            "`houseID`= (SELECT house.id FROM house WHERE number=? AND deleted IS NULL AND complexID = (SELECT complex.id FROM complex WHERE name =? AND city =? AND street=? AND deleted IS NULL)),\n" +
+            "`houseID`= (SELECT house.id FROM house WHERE number=? AND complexID = (SELECT complex.id FROM complex WHERE name =? AND city =? AND street=? )),\n" +
             "`apartmentNumber`=?,\n" +
             "`area`=?,\n" +
             "`rooms`=?,\n" +
@@ -77,7 +82,7 @@ public class Query {
     public static final String insertApartment = "INSERT INTO `apartment`" +
             "(`houseID`, `apartmentNumber`, `area`, `rooms`, `entrance`, `floor`, `statusSale`, `addedValue`, `cost`) \n" +
             "VALUES (" +
-            "(SELECT house.id FROM house WHERE number=? AND deleted IS NULL AND complexID = (SELECT complex.id FROM complex WHERE name =? AND city =? AND street=? AND deleted IS NULL)) ," +
+            "(SELECT house.id FROM house WHERE number=? AND complexID = (SELECT complex.id FROM complex WHERE name =? AND city =? AND street=?)) ," +
             "?,?,?,?,?,?,?,?);";
     public static final String getHouses = "SELECT house.id, complex.name, complex.street, IF(house.number IS NULL " +
             "OR house.number = \"\", \"Без номера\", house.number) AS number, complex.statusConstruction, IF(sold_ap.sold IS NULL, " +
