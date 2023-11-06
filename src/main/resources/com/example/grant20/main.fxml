@@ -28,6 +28,8 @@
                   <Image url="@logo.png" />
                </image>
             </ImageView>
+            <Button fx:id="openAdminButton" layoutX="410.0" layoutY="121.0" mnemonicParsing="false" onAction="#openAdmin" prefHeight="34.0" prefWidth="81.0" style="-fx-font-family: arial;" stylesheets="@style.css" text="Админ" />
+            <Label fx:id="labelMenu" layoutX="161.0" layoutY="29.0" prefHeight="26.0" prefWidth="50.0" style="-fx-text-fill: rgb(55, 71, 79); -fx-font-size: 12pt; -fx-font-weight: bold;" stylesheets="@style.css" text="Меню" textAlignment="CENTER" />
          </children>
       </AnchorPane>
    </children>

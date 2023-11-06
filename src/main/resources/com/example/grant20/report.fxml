@@ -34,7 +34,6 @@
                 <Label fx:id="finalLabel1" layoutX="585.0" layoutY="450.0" text="Сумма оценочных стоимостей" />
                 <Label fx:id="labelComplexesFilter" layoutX="165.0" layoutY="438.0" text="Фильтр по ЖК" />
                 <Label fx:id="labelHousesFilter" layoutX="165.0" layoutY="498.0" text="Выборка по дому" />
-                <Label fx:id="ThisISCommentDeleteLater" layoutX="121.0" layoutY="411.0" style="-fx-text-fill: red;" text="Эта кнопка вычисляет отображает значения в лейблах справа (сумма 1 и 4 зависят от выставления/не выставления фильтра)" />
                 <Label fx:id="summEstimatedCost" layoutX="585.0" layoutY="474.0" style="-fx-text-fill: green; -fx-font-weight: bold;" text="Сумма 1" />
                 <Label fx:id="finalLabel2" layoutX="585.0" layoutY="502.0" prefHeight="18.0" prefWidth="306.0" text="Сумма оценочных стоимостей непроданных квартир" />
                 <Label fx:id="summEstimatedCostNotSold" layoutX="585.0" layoutY="526.0" style="-fx-text-fill: green; -fx-font-weight: bold;" text="Сумма 2" />

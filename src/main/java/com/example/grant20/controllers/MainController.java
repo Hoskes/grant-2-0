@@ -1,6 +1,7 @@
 package com.example.grant20.controllers;
 
 import com.example.grant20.HelloApplication;
+import com.example.grant20.controllers.admin.AdminController;
 import com.example.grant20.controllers.apartments.ApartmentController;
 import com.example.grant20.controllers.complexes.ComplexController;
 import com.example.grant20.controllers.houses.HouseController;
@@ -40,6 +41,10 @@ public class MainController{
     void setUserName(User user) {
         labelFioAuthorizedPerson.setText(labelFioAuthorizedPerson.getText()+"\n"+user.getName());
     }
+
+    @FXML
+    private Button openAdminButton;
+
     @FXML
     private Button openProfileButton;
 
@@ -76,6 +81,12 @@ public class MainController{
     void openReports(ActionEvent event) {
         HelloApplication.changeMainPage("report.fxml",new ReportController(profile));
     }
+
+    @FXML
+    void openAdmin(ActionEvent event) {
+        HelloApplication.changeMainPage("admin.fxml",new AdminController(profile));
+    }
+
     @FXML
     public void initialize() {
         setUserName(profile);

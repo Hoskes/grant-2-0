@@ -11,6 +11,10 @@ public class Query {
     public static final String deleteComplexById = "DELETE FROM `complex` WHERE id =?";
     public static final String deleteHouseById = "DELETE FROM `house` WHERE id=?";
     public static final String deleteApartmentById = "DELETE FROM `apartment` WHERE id=?";
+    public static final String getPeople = "SELECT * FROM employee ORDER BY confirm";
+    public static final String updatePersonById = "UPDATE `employee` \n" +
+                                                        "SET `confirm`=1\n" +
+                                                        "WHERE `mail`=?;";
     public static final String updateHouseById = "UPDATE `house` \n" +
             "SET `number`=?,\n" +
             "`addedValue`=?,\n" +
@@ -115,5 +119,15 @@ public class Query {
             "apartment.addedValue AS apartmentAddedValue, house.id AS houseId, house.number AS houseNumber, house.addedValue AS houseAddedValue, house.buildingCosts AS houseBuildingCosts, complex.id AS complexId, " +
             "complex.name AS complexName, complex.addedValue AS complexAddedValue, complex.buildingCosts AS complexBuildingCosts,apartment.floor,apartment.cost\n" +
             "FROM apartment JOIN house ON apartment.houseID=house.id JOIN complex ON house.complexID=complex.id;";
+
+    public static final String query1 = "SELECT apartment.id AS apartmentId, apartment.apartmentNumber, apartment.area, apartment.rooms, apartment.statusSale, " +
+            "apartment.addedValue AS apartmentAddedValue, house.id AS houseId, house.number AS houseNumber, house.addedValue AS houseAddedValue, house.buildingCosts AS houseBuildingCosts, complex.id AS complexId, " +
+            "complex.name AS complexName, complex.addedValue AS complexAddedValue, complex.buildingCosts AS complexBuildingCosts,apartment.floor,apartment.cost\n" +
+            "FROM apartment JOIN house ON apartment.houseID=house.id JOIN complex ON house.complexID=complex.id WHERE house.id=1;";
+
+    public static final String query2 = "SELECT apartment.id AS apartmentId, apartment.apartmentNumber, apartment.area, apartment.rooms, apartment.statusSale, " +
+            "apartment.addedValue AS apartmentAddedValue, house.id AS houseId, house.number AS houseNumber, house.addedValue AS houseAddedValue, house.buildingCosts AS houseBuildingCosts, complex.id AS complexId, " +
+            "complex.name AS complexName, complex.addedValue AS complexAddedValue, complex.buildingCosts AS complexBuildingCosts,apartment.floor,apartment.cost\n" +
+            "FROM apartment JOIN house ON apartment.houseID=house.id JOIN complex ON house.complexID=complex.id WHERE complex.id=2;";
 
 }
