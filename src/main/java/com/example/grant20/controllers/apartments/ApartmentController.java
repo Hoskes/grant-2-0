@@ -122,17 +122,17 @@ public class ApartmentController {
         TableView<Apartment> apartmentTable = new TableViewGenerator<Apartment>(Apartment.class,filteredItems,0,10).getTable();
         table = apartmentTable;
         list = table.getItems();
-        FilteredList<Apartment> mainlist = new FilteredList(list);
-
-        TableFilterGenerator<Apartment> filter= new TableFilterGenerator(table,mainlist);
+        //фильтрация
+        FilteredList<Apartment> mainList = new FilteredList(list);
+        TableFilterGenerator<Apartment> filter= new TableFilterGenerator(table,mainList);
         filter.addNewEqualsFilter(filterTo,"houseName");
         filter.addNewEqualsFilter(filterSection,"entrance");
         filter.addNewEqualsFilter(filterStage,"floor");
         filter.addNewEqualsFilter(filterStatus,"statusSale");
-
-        TableFilterGenerator<Apartment> foundFilter = new TableFilterGenerator(table,mainlist);
+        //фильтрация по расстоянию Леввенштейна
+        TableFilterGenerator<Apartment> foundFilter = new TableFilterGenerator(table,mainList);
         foundFilter.addNewLevenshteinFilter(levensteinTextField);
-
+        //установка фильтров
         filter.setFiltersToTable();
         foundFilter.setFiltersToTable();
         pagination.setPageFactory(this::createPage);

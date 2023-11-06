@@ -79,7 +79,6 @@ public class HouseController {
     @FXML
     public void initialize() {
         ObservableList<House> items = FXCollections.observableArrayList();
-        FilteredList<House> filteredItems = new FilteredList<>(items, p -> true);
         ResultSet resultSet = DBConnect.getDBConnect().executeSelect(Query.getAllFromHouses);
         try {
             while (resultSet.next()) {
@@ -89,7 +88,7 @@ public class HouseController {
             System.out.println("Apartment list creation error");
             throw new RuntimeException(e);
         }
-
+        FilteredList<House> filteredItems = new FilteredList<>(items, p -> true);
         TableView<House> housesTable = new TableViewGenerator(House.class, filteredItems, 0, 8).getTable();
         pane.getChildren().add(housesTable);
         table = housesTable;

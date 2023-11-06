@@ -111,7 +111,9 @@ public class Query {
             "GROUP BY complex.id\n" +
             "ORDER BY complex.city, complex.statusConstruction";
 
-    public static final String getReport = "SELECT apartment.apartmentNumber, apartment.floor, apartment.statusSale, " +
-            "apartment.cost, complex.name, house.number\n" +
+    public static final String getReport = "SELECT apartment.id AS apartmentId, apartment.apartmentNumber, apartment.area, apartment.rooms, apartment.statusSale, " +
+            "apartment.addedValue AS apartmentAddedValue, house.id AS houseId, house.number AS houseNumber, house.addedValue AS houseAddedValue, house.buildingCosts AS houseBuildingCosts, complex.id AS complexId, " +
+            "complex.name AS complexName, complex.addedValue AS complexAddedValue, complex.buildingCosts AS complexBuildingCosts,apartment.floor,apartment.cost\n" +
             "FROM apartment JOIN house ON apartment.houseID=house.id JOIN complex ON house.complexID=complex.id;";
+
 }

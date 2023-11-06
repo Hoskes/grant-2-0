@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.function.Predicate;
 
-
+//Генератор динамических фильтров для таблиц TableView.
 public class TableFilterGenerator<T> {
     TableView<T> housesTable;
     FilteredList<T> filteredItems;
@@ -25,6 +25,7 @@ public class TableFilterGenerator<T> {
     }
 
     public void addNewEqualsFilter(TextField notClearSearchField, String category) {
+        //добавление слушателя
         notClearSearchField.textProperty().addListener(((observableValue, oldValue, newValue) -> {
             Predicate<T> a = person -> {
                 if (newValue == null || newValue.isEmpty()) {
@@ -32,6 +33,7 @@ public class TableFilterGenerator<T> {
                 }
                 String data = "";
                 try {
+                    //получение геттеров
                     Method fieldGetter = person.getClass().getMethod("get" + category.substring(0, 1).toUpperCase() + category.substring(1));
                     data = fieldGetter.invoke(person).toString();
                 } catch (NoSuchMethodException e) {
@@ -42,9 +44,9 @@ public class TableFilterGenerator<T> {
                 } catch (IllegalAccessException e) {
                     throw new RuntimeException(e);
                 }
-                String lowerCaseFilter = newValue.toLowerCase();
+
                 if (data.toLowerCase().contains(newValue.toLowerCase())) {
-                    return true; // Filter matches first name.
+                    return true;
                 }
                 return false; // Does not match.
             };
@@ -56,7 +58,7 @@ public class TableFilterGenerator<T> {
     public void addNewEqualsFilter(ChoiceBox<String> notClearSearchField, String category) {
         notClearSearchField.getSelectionModel().selectedItemProperty().addListener(((observableValue, oldValue, newValue) -> {
             Predicate<T> a = person -> {
-                if (newValue == null || newValue.isEmpty()) {
+                if (newValue == null || newValue.isEmpty() || newValue.equals("")) {
                     return true;
                 }
                 String data = "";

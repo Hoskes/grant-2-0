@@ -205,7 +205,6 @@ public class AddApartmentController {
         ;
         if (currentObject != null) {
             enterArea.setText("" + currentObject.getArea());
-//            Regex.addListenerFormatter(enterArea,Regex.checkPositiveNumbers);
 
             enterFloor.setText("" + currentObject.getFloor());
             Regex.addListenerFormatter(enterFloor, Regex.checkPositiveNumbers);
@@ -217,7 +216,6 @@ public class AddApartmentController {
             Regex.addListenerFormatter(enterRooms, Regex.checkPositiveNumbers);
 
             enterNumber.setText("" + currentObject.getApartmentNumber());
-//            Regex.addListenerFormatter(enterArea,Regex.checkPositiveNumbers);
 
             chooseComplex.setValue("");
             chooseStatus.setValue(currentObject.getStatusSale());

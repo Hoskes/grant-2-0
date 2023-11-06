@@ -34,7 +34,7 @@ public class Apartment {
         this.houseName = resultSet.getString(2);
         this.apartmentNumber = resultSet.getInt(3);
         this.address = resultSet.getString(4);
-        this.area = resultSet.getInt(5);
+        this.area = resultSet.getDouble(5);
         this.rooms = resultSet.getInt(6);
         this.entrance = resultSet.getInt(7);
         this.floor = resultSet.getInt(8);

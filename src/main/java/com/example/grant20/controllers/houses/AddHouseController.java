@@ -146,7 +146,8 @@ public class AddHouseController {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 ObservableList<String> streetChoice = FXCollections.observableArrayList();
-                ResultSet complexes = DBConnect.executePreparedSelect(Query.getStreetNamesWhereComplex, new ArrayList<>(Arrays.asList(chooseComplex.getSelectionModel().getSelectedItem())));
+                ResultSet complexes = DBConnect.executePreparedSelect(
+                        Query.getStreetNamesWhereComplex, new ArrayList<>(Arrays.asList(chooseComplex.getSelectionModel().getSelectedItem())));
                 try {
                     while (complexes.next()) {
                         streetChoice.add(complexes.getString(2));

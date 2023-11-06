@@ -4,13 +4,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Report {
-
-    String apartmentNumber;
-    int floor;
-    String statusSale;
-    int cost;
     String complexName;
     String houseNumber;
+    int floor;
+    String apartmentNumber;
+    int cost;
+    String statusSale;
+
+
 
     public Report(String apartmentNumber, int floor, String statusSale, int cost, String complexName, String houseNumber) {
         this.apartmentNumber = apartmentNumber;

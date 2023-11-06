@@ -52,12 +52,12 @@ public class ComplexController {
 
     @FXML
     void change(ActionEvent event) {
-        HelloApplication.changeMainPage("add_change_complex.fxml",new AddComplexController(this,table.getSelectionModel().getSelectedItem()));
+        HelloApplication.changeMainPage("add_change_complex.fxml", new AddComplexController(this, table.getSelectionModel().getSelectedItem()));
     }
 
     @FXML
     void create(ActionEvent event) {
-        HelloApplication.changeMainPage("add_change_complex.fxml",new AddComplexController(this));
+        HelloApplication.changeMainPage("add_change_complex.fxml", new AddComplexController(this));
     }
 
     @FXML
@@ -65,15 +65,19 @@ public class ComplexController {
         MyAlert alert = new MyAlert("Вы действительно хотите удалить запись №" + table.getSelectionModel().getSelectedItem().getId() + "?");
         if (alert.getAlert() == ButtonType.YES) {
             Complex deletedItem = table.getSelectionModel().getSelectedItem();
+            //изменение типа списка для удаления объекта
             ArrayList<Complex> bufList = new ArrayList<>(table.getItems().stream().toList());
             bufList.remove(deletedItem);
             table.setItems(FXCollections.observableArrayList(bufList));
             DBConnect.executePreparedModificationQuery(Query.deleteComplexById, new ArrayList(Arrays.asList(deletedItem.getId() + "")));
         }
     }
+
     @FXML
     public void initialize() {
+        //выполнение запроса
         ResultSet resultSet = DBConnect.getDBConnect().executeSelect(Query.getComplexes);
+        //заполение данных и создание таблицы с данными
         ObservableList<Complex> items = FXCollections.observableArrayList();
         try {
             while (resultSet.next()) {
@@ -84,14 +88,15 @@ public class ComplexController {
             throw new RuntimeException(e);
         }
         FilteredList<Complex> filteredItems = new FilteredList<>(items, p -> true);
-        TableView<Complex> complexTable = new TableViewGenerator<Complex>(Complex.class, filteredItems,0,7).getTable();
+        TableView<Complex> complexTable = new TableViewGenerator<Complex>(Complex.class, filteredItems, 0, 7).getTable();
         table = complexTable;
         //фильтрация
-        TableFilterGenerator<Complex> filter = new TableFilterGenerator<>(table,filteredItems);
-        filter.addNewEqualsFilter(enterCity,"city");
-        filter.addNewEqualsFilter(enterStatus,"status");
+        TableFilterGenerator<Complex> filter = new TableFilterGenerator<>(table, filteredItems);
+        filter.addNewEqualsFilter(enterCity, "city");
+        filter.addNewEqualsFilter(enterStatus, "status");
+        //применение фильтров к таблице
         filter.setFiltersToTable();
-
+        //размещение таблицы на сцену
         pane.getChildren().add(complexTable);
     }
 

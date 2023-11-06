@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -8,6 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="1205.0" stylesheets="@withTables.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
@@ -23,15 +25,14 @@
                     <font>
                         <Font size="14.0" />
                     </font></Label>
-                <TextField fx:id="areaCost" layoutX="738.0" layoutY="145.0" onAction="#enterAreaCost" prefHeight="26.0" prefWidth="272.0" />
+                <TextField fx:id="areaCost" layoutX="738.0" layoutY="145.0" prefHeight="26.0" prefWidth="272.0" />
                 <Label fx:id="coefLabel1" layoutX="738.0" layoutY="120.0" text="Стоимость 1 квадратного метра" />
-                <TextField fx:id="roomsCost" layoutX="738.0" layoutY="209.0" onAction="#enterRoomsCost" prefHeight="26.0" prefWidth="272.0" />
+                <TextField fx:id="roomsCost" layoutX="738.0" layoutY="209.0" prefHeight="26.0" prefWidth="272.0" />
                 <Label fx:id="coefLabel2" layoutX="738.0" layoutY="184.0" text="Стоимость комнаты" />
-                <TextField fx:id="baseCost" layoutX="738.0" layoutY="269.0" onAction="#enterBaseCost" prefHeight="26.0" prefWidth="272.0" />
+                <TextField fx:id="baseCost" layoutX="738.0" layoutY="269.0" prefHeight="26.0" prefWidth="272.0" />
                 <Label fx:id="coefLabel3" layoutX="738.0" layoutY="244.0" text="Добавочная базовая стоимость" />
-                <Button fx:id="createReportButton" layoutX="435.0" layoutY="489.0" mnemonicParsing="false" onAction="#createReport" prefHeight="43.0" prefWidth="110.0" text="Составить отчет" />
                 <Label fx:id="finalLabel1" layoutX="585.0" layoutY="450.0" text="Сумма оценочных стоимостей" />
-                <Label fx:id="labelComplexesFilter" layoutX="165.0" layoutY="438.0" text="Выборка по ЖК" />
+                <Label fx:id="labelComplexesFilter" layoutX="165.0" layoutY="438.0" text="Фильтр по ЖК" />
                 <Label fx:id="labelHousesFilter" layoutX="165.0" layoutY="498.0" text="Выборка по дому" />
                 <Label fx:id="ThisISCommentDeleteLater" layoutX="121.0" layoutY="411.0" style="-fx-text-fill: red;" text="Эта кнопка вычисляет отображает значения в лейблах справа (сумма 1 и 4 зависят от выставления/не выставления фильтра)" />
                 <Label fx:id="summEstimatedCost" layoutX="585.0" layoutY="474.0" style="-fx-text-fill: green; -fx-font-weight: bold;" text="Сумма 1" />
@@ -39,15 +40,22 @@
                 <Label fx:id="summEstimatedCostNotSold" layoutX="585.0" layoutY="526.0" style="-fx-text-fill: green; -fx-font-weight: bold;" text="Сумма 2" />
                 <Label fx:id="finalLabel3" layoutX="585.0" layoutY="556.0" prefHeight="18.0" prefWidth="306.0" text="Сумма оценочных стоимостей проданных квартир" />
                 <Label fx:id="summEstimatedCostSold" layoutX="585.0" layoutY="580.0" style="-fx-text-fill: green; -fx-font-weight: bold;" text="Сумма 3" />
-                <Label fx:id="finalLabel4" layoutX="933.0" layoutY="443.0" text="Сумма затрат на строительство" />
-                <Label fx:id="summConstructionCost" layoutX="933.0" layoutY="467.0" style="-fx-text-fill: green; -fx-font-weight: bold;" text="Сумма 4" />
-                <Label fx:id="finalLabel41" layoutX="933.0" layoutY="499.0" text="Прибыль компании" />
-                <Label fx:id="summCompanyIncome" layoutX="933.0" layoutY="523.0" style="-fx-text-fill: green; -fx-font-weight: bold;" text="Сумма 5" />
+                <Label fx:id="finalLabel4" layoutX="904.0" layoutY="454.0" text="Сумма затрат на строительство" />
+                <Label fx:id="summConstructionCost" layoutX="904.0" layoutY="478.0" style="-fx-text-fill: green; -fx-font-weight: bold;" text="Сумма 4" />
+                <Label fx:id="finalLabel41" layoutX="904.0" layoutY="510.0" text="Прибыль компании" />
+                <Label fx:id="summCompanyIncome" layoutX="904.0" layoutY="534.0" style="-fx-text-fill: green; -fx-font-weight: bold;" text="Сумма 5" />
                 <ImageView fitHeight="60" fitWidth="150" layoutX="1043.0" layoutY="598.0">
                     <image>
                         <Image url="@logo.png" />
                     </image>
                 </ImageView>
+            <ChoiceBox fx:id="filterComplex" layoutX="165.0" layoutY="461.0" prefHeight="27.0" prefWidth="202.0" />
+            <ChoiceBox fx:id="filterHouse" layoutX="165.0" layoutY="526.0" prefHeight="27.0" prefWidth="201.0" />
+            <Text layoutX="738.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="При неккоректно введенном значении будет применен стандартный коэфициент" wrappingWidth="272.0000000000002">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
             </children>
         </AnchorPane>
     </children>
