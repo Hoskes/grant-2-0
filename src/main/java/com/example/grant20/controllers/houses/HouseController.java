@@ -60,7 +60,6 @@ public class HouseController {
 
     @FXML
     void createHouse(ActionEvent event) {
-        System.out.println(table.getSelectionModel().getSelectedItem());
         HelloApplication.changeMainPage("add_change_house.fxml", new AddHouseController(this));
     }
 

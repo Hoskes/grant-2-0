@@ -24,8 +24,8 @@
             <Label fx:id="addedValueLabel" layoutX="49.0" layoutY="231.0" prefHeight="18.0" prefWidth="222.0" text="Добавочная стоимость" />
             <TextField fx:id="enterBuildingCost" layoutX="49.0" layoutY="320.0" onAction="#enterBuildingCost" prefHeight="26.0" prefWidth="318.0" />
             <Label fx:id="buildingCostLabel" layoutX="49.0" layoutY="293.0" prefHeight="18.0" prefWidth="178.0" text="Стоимость постройки" />
-            <Button fx:id="saveChangesButton" layoutX="143.0" layoutY="402.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="26.0" prefWidth="157.0" text="Сохранить" />
-            <Button fx:id="goBackButton" layoutX="14.0" layoutY="403.0" mnemonicParsing="false" onAction="#goToHouses" prefHeight="26.0" prefWidth="70.0" text="Назад" />
+            <Button fx:id="saveChangesButton" layoutX="129.0" layoutY="367.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="26.0" prefWidth="157.0" text="Сохранить" />
+            <Button fx:id="goBackButton" layoutX="14.0" layoutY="403.0" mnemonicParsing="false" onAction="#goToHouses" prefHeight="42.0" prefWidth="110.0" text="Назад" />
             <Label fx:id="streetLabel" layoutX="51.0" layoutY="105.0" text="Улица" />
             <ChoiceBox fx:id="enterStreet" layoutX="49.0" layoutY="127.0" prefHeight="26.0" prefWidth="318.0" />
             <Label fx:id="complexLabel" layoutX="49.0" layoutY="52.0" prefHeight="18.0" prefWidth="69.0" text="ЖК" />

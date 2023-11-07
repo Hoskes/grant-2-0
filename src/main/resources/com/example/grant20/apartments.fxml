@@ -22,13 +22,13 @@
             <Button fx:id="goBackButton" layoutX="37.0" layoutY="569.0" mnemonicParsing="false" onAction="#goToMainPage" prefHeight="50.0" prefWidth="126.0" text="Назад" />
             <Button fx:id="createApartmentButton" layoutX="837.0" layoutY="143.0" mnemonicParsing="false" onAction="#createApartment" prefHeight="37.0" prefWidth="155.0" text="Создать" />
             <Button fx:id="changeApartmentButton" layoutX="837.0" layoutY="205.0" mnemonicParsing="false" onAction="#changeApartment" prefHeight="37.0" prefWidth="155.0" text="Изменить" />
-            <Button fx:id="deleteApartmentButton" layoutX="837.0" layoutY="270.0" mnemonicParsing="false" onAction="#deleteApartment" prefHeight="37.0" prefWidth="155.0" text="Удалить" />
+            <Button fx:id="deleteApartmentButton" layoutX="837.0" layoutY="266.0" mnemonicParsing="false" onAction="#deleteApartment" prefHeight="37.0" prefWidth="155.0" text="Удалить" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="803.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logo.png" />
                </image>
             </ImageView>
-            <TextField fx:id="filterTo" layoutX="37.0" layoutY="489.0" prefHeight="26.0" prefWidth="208.0" promptText="ЖК" />
+            <TextField fx:id="filterTo" layoutX="61.0" layoutY="500.0" prefHeight="26.0" prefWidth="208.0" promptText="ЖК" />
             <TextField fx:id="levensteinTextField" layoutX="91.0" layoutY="60.0" prefHeight="26.0" prefWidth="707.0" promptText="Поиск квартиры..." />
             <Text layoutX="420.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Квартиры">
                <font>
@@ -36,10 +36,10 @@
                </font>
             </Text>
             <Pagination fx:id="pagination" layoutX="91.0" layoutY="97.0" prefHeight="382.0" prefWidth="726.0" />
-            <TextField fx:id="filterSection" layoutX="255.0" layoutY="489.0" prefHeight="26.0" prefWidth="208.0" promptText="Подъезд" />
-            <TextField fx:id="filterStage" layoutX="474.0" layoutY="489.0" prefHeight="26.0" prefWidth="208.0" promptText="Этаж" />
-            <TextField fx:id="filterStatus" layoutX="695.0" layoutY="489.0" prefHeight="26.0" prefWidth="208.0" promptText="Статус" />
-            <Text layoutX="43.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Фильтры:" wrappingWidth="95.81094360351562">
+            <TextField fx:id="filterSection" layoutX="279.0" layoutY="500.0" prefHeight="26.0" prefWidth="208.0" promptText="Подъезд" />
+            <TextField fx:id="filterStage" layoutX="498.0" layoutY="500.0" prefHeight="26.0" prefWidth="208.0" promptText="Этаж" />
+            <TextField fx:id="filterStatus" layoutX="719.0" layoutY="500.0" prefHeight="26.0" prefWidth="208.0" promptText="Статус" />
+            <Text layoutX="67.0" layoutY="486.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Фильтры" wrappingWidth="95.81094360351562">
                <font>
                   <Font size="14.0" />
                </font>

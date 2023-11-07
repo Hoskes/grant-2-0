@@ -42,7 +42,6 @@ public class AdminController {
     void confirmPerson(ActionEvent event) {
         Admin admin = table.getSelectionModel().getSelectedItem();
         DBConnect.executePreparedModificationQuery(Query.updatePersonConfirm, admin.getMail());
-        updateTable();
         MyAlert alert = new MyAlert("Запись успешно изменена");
     }
 
@@ -61,23 +60,7 @@ public class AdminController {
         FilteredList<Admin> filteredItems = new FilteredList<>(items, p -> true);
         TableView<Admin> adminTable = new TableViewGenerator<Admin>(Admin.class,filteredItems).getTable();
         table = adminTable;
-        pane.getChildren().add(adminTable);
-    }
-
-    private void updateTable() {
-        ObservableList<Admin> items = FXCollections.observableArrayList();
-        ResultSet resultSet = DBConnect.getDBConnect().executeSelect(Query.getPeople);
-        try {
-            while (resultSet.next()) {
-                items.add(new Admin(resultSet));
-            }
-        } catch (SQLException e) {
-            System.out.println("Apartment list creation error");
-            throw new RuntimeException(e);
-        }
-        FilteredList<Admin> filteredItems = new FilteredList<>(items, p -> true);
-        TableView<Admin> adminTable = new TableViewGenerator<Admin>(Admin.class,filteredItems).getTable();
-        table = adminTable;
+        table.setLayoutY(20);
         pane.getChildren().add(adminTable);
     }
 

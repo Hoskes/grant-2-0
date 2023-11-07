@@ -58,12 +58,10 @@ public class AuthController {
                         profile = new User(log.getText());
                         HelloApplication.changeMainPage("main.fxml", new MainController(profile));
                         MainController controller = HelloApplication.getLoader().getController();
-                        System.out.println(controller);
-                        System.out.println(controller.getClass());
                         controller.setProfile(profile);
                     }
                 } else {
-                    System.out.println("e");
+                    System.out.println("Error");
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);

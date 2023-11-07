@@ -35,7 +35,6 @@ public class EvaluationModel {
         HashSet<String> complexes = new HashSet<>();
         double sum = 0;
         for (EstimatedCost e : list) {
-            System.out.println(e.getComplexName()+" "+e.getHouseNumber()+" "+e.getApartmentNumber()+" "+sum+": ");
             sum+=e.getApartmentAddedValue();
             if(!complexes.add(e.getComplexName())){
                 sum+=e.getComplexBuildingCosts();

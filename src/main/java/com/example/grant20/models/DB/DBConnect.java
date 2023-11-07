@@ -75,9 +75,6 @@ public class DBConnect {
                 query.setString(i+1, parameters.get(i));
             }
             int deletedRows = query.executeUpdate();
-            if(deletedRows>0){
-                System.out.println("Success");
-            }
         }catch (SQLException e){
             MyAlert alert = new MyAlert("Ошибка в заполнении данных! Пожалуйства проверьте корректность заполненных вами значений");
             System.out.println("Parametrized Query Error");
@@ -90,9 +87,6 @@ public class DBConnect {
             PreparedStatement query = DBConnect.getDBConnect().getConnection().prepareStatement(queryString);
             query.setString(1, parameter);
             int deletedRows = query.executeUpdate();
-            if(deletedRows>0){
-                System.out.println("Success");
-            }
         }catch (SQLException e){
             MyAlert alert = new MyAlert("Ошибка в заполнении данных! Пожалуйства проверьте корректность заполненных вами значений");
             System.out.println("Parametrized Query Error");

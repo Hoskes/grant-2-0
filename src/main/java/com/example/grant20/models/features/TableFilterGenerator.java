@@ -97,7 +97,6 @@ public class TableFilterGenerator<T> {
                         Method fieldGetter = person.getClass().getMethod("get" + f.getName().substring(0, 1).toUpperCase() + f.getName().substring(1));
                         data = fieldGetter.invoke(person).toString();
                         if (LevenshteinDistance.calculateDistance(data.toLowerCase(), newValue.toLowerCase()) < 5) {
-                            System.out.println(data.toLowerCase());
                             return true;
                         }
                     }

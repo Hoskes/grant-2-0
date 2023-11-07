@@ -199,9 +199,8 @@ public class AddApartmentController {
 
     @FXML
     public void initialize() {
-        System.out.println(currentObject);
         ObservableList statusList = FXCollections.observableArrayList(Arrays.asList("ready", "sold"));
-        ;
+
         if (currentObject != null) {
             enterArea.setText("" + currentObject.getArea());
 

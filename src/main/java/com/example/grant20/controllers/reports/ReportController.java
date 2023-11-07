@@ -128,9 +128,7 @@ public class ReportController {
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 if(t1.isEmpty() || t1.equals("")){
                     filterHouse.setItems(getValuesFromList("houseNumber"));
-                    System.out.println("free");
-                }else {
-                    System.out.println("A");
+                } else {
                     filterHouse.setItems(getHouses(t1));
                 }
             }
