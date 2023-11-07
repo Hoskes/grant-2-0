@@ -26,4 +26,6 @@ module com.example.grant20 {
     opens com.example.grant20.models.features to javafx.fxml;
     exports com.example.grant20.models.DB;
     opens com.example.grant20.models.DB to javafx.fxml;
+    exports com.example.grant20.controllers.admin;
+    opens com.example.grant20.controllers.admin to javafx.fxml;
 }

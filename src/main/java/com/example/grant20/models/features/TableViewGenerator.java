@@ -1,16 +1,12 @@
 package com.example.grant20.models.features;
 
-import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.lang.reflect.Field;
-import java.lang.reflect.Type;
-import java.net.URL;
-import java.util.ArrayList;
+
 //Генератор таблиц на основе списка элементов класса модели данных.
 public class TableViewGenerator<T> {
     TableView<T> table;
@@ -26,7 +22,7 @@ public class TableViewGenerator<T> {
         }
         table.getItems().addAll(list);
         table.setLayoutX(20);
-        table.setLayoutY(20);
+        table.setLayoutY(50);
         table.setPrefHeight(350);
         table.setPrefWidth(700);
     }
@@ -42,7 +38,7 @@ public class TableViewGenerator<T> {
         }
         table.getItems().addAll(list);
         table.setLayoutX(20);
-        table.setLayoutY(20);
+        table.setLayoutY(50);
         table.setPrefHeight(350);
         table.setPrefWidth(700);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);

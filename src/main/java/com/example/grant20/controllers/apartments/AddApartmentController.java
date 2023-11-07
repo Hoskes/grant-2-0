@@ -5,7 +5,6 @@ import com.example.grant20.models.DB.DBConnect;
 import com.example.grant20.models.DB.Query;
 import com.example.grant20.models.MyAlert;
 import com.example.grant20.models.dataModel.Apartment;
-import com.example.grant20.models.dataModel.House;
 import com.example.grant20.models.features.Regex;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -184,7 +183,10 @@ public class AddApartmentController {
             MyAlert alert = new MyAlert("Запись успешно изменена");
             HelloApplication.changeMainPage("apartments.fxml", toPage);
         }
-        MyAlert alert = new MyAlert("Ошибка в заполнении данных! Пожалуйства проверьте корректность заполненных вами значений");
+        else {
+            MyAlert alert = new MyAlert("Ошибка в заполнении данных! Пожалуйства проверьте корректность заполненных вами значений");
+        }
+
 
     }
 
@@ -200,9 +202,8 @@ public class AddApartmentController {
 
     @FXML
     public void initialize() {
-        System.out.println(currentObject);
         ObservableList statusList = FXCollections.observableArrayList(Arrays.asList("ready", "sold"));
-        ;
+
         if (currentObject != null) {
             enterArea.setText("" + currentObject.getArea());
 

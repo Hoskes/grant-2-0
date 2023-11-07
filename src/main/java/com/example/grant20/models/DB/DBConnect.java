@@ -1,6 +1,5 @@
 package com.example.grant20.models.DB;
 
-import com.example.grant20.HelloApplication;
 import com.example.grant20.models.MyAlert;
 
 import java.sql.*;
@@ -13,7 +12,7 @@ public class DBConnect {
     private DBConnect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://std-mysql.ist.mospolytech.ru:3306/std_2260_dbgrant2v1", "std_2260_dbgrant2v1", "9999Send");
+            connection = DriverManager.getConnection("jdbc:mysql://std-mysql.ist.mospolytech.ru:3306/std_2260_dbgrant2v2", "std_2260_dbgrant2v2", "9999Send");
         } catch (ClassNotFoundException | SQLException e) {
             MyAlert alert = new MyAlert("Ошибка соединения! пожалуйста перезапустите приложение");
             throw new RuntimeException(e);
@@ -76,9 +75,18 @@ public class DBConnect {
                 query.setString(i+1, parameters.get(i));
             }
             int deletedRows = query.executeUpdate();
-            if(deletedRows>0){
-                System.out.println("Success");
-            }
+        }catch (SQLException e){
+            MyAlert alert = new MyAlert("Ошибка в заполнении данных! Пожалуйства проверьте корректность заполненных вами значений");
+            System.out.println("Parametrized Query Error");
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void executePreparedModificationQuery(String queryString, String parameter){
+        try {
+            PreparedStatement query = DBConnect.getDBConnect().getConnection().prepareStatement(queryString);
+            query.setString(1, parameter);
+            int deletedRows = query.executeUpdate();
         }catch (SQLException e){
             MyAlert alert = new MyAlert("Ошибка в заполнении данных! Пожалуйства проверьте корректность заполненных вами значений");
             System.out.println("Parametrized Query Error");

@@ -1,6 +1,7 @@
 package com.example.grant20.controllers;
 
 import com.example.grant20.HelloApplication;
+import com.example.grant20.controllers.admin.AdminController;
 import com.example.grant20.controllers.apartments.ApartmentController;
 import com.example.grant20.controllers.complexes.ComplexController;
 import com.example.grant20.controllers.houses.HouseController;
@@ -36,15 +37,18 @@ public class MainController{
 
     @FXML
     private Label labelFioAuthorizedPerson;
+
+    @FXML
+    private Button openAdminButton;
+
+
+    @FXML
+    private Button reportButton;
+
     @FXML
     void setUserName(User user) {
         labelFioAuthorizedPerson.setText(labelFioAuthorizedPerson.getText()+"\n"+user.getName());
     }
-    @FXML
-    private Button openProfileButton;
-
-    @FXML
-    private Button reportButton;
 
     @FXML
     void logOut(ActionEvent event) {
@@ -68,17 +72,23 @@ public class MainController{
     }
 
     @FXML
-    void openProfile(ActionEvent event) {
-        ///
-    }
-
-    @FXML
     void openReports(ActionEvent event) {
         HelloApplication.changeMainPage("report.fxml",new ReportController(profile));
     }
+
+    @FXML
+    void openAdmin(ActionEvent event) {
+        HelloApplication.changeMainPage("admin.fxml",new AdminController(profile));
+    }
+
     @FXML
     public void initialize() {
         setUserName(profile);
+        if (profile.getRoleId() != 1)
+            openAdminButton.setVisible(false);
+        else {
+            openAdminButton.setVisible(true);
+        }
     }
     public MainController(User user){
         profile = user;

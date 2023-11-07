@@ -9,7 +9,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="382.0" prefWidth="526.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="514.0" prefWidth="675.0" stylesheets="@withTables.css">
+      <AnchorPane fx:id="pane" prefHeight="514.0" prefWidth="675.0" stylesheets="@withTables.css">
          <children>
             <ImageView fitHeight="503.0" fitWidth="689.0" layoutX="-95.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -22,12 +22,13 @@
             <Button fx:id="complexButton" layoutX="30.0" layoutY="187.0" mnemonicParsing="false" onAction="#openComplexesView" prefHeight="44.0" prefWidth="314.0" stylesheets="@style.css" text="ЖК" />
             <Button fx:id="reportButton" layoutX="30.0" layoutY="247.0" mnemonicParsing="false" onAction="#openReports" prefHeight="44.0" prefWidth="314.0" stylesheets="@style.css" text="Отчет" />
             <Label fx:id="labelFioAuthorizedPerson" layoutX="286.0" layoutY="22.0" style="-fx-text-fill: rgb(55, 71, 79); -fx-font-size: 12pt; -fx-font-weight: bold;" stylesheets="@style.css" text="Здравствуйте," textAlignment="CENTER" />
-            <Button fx:id="openProfileButton" layoutX="410.0" layoutY="74.0" mnemonicParsing="false" onAction="#openProfile" prefHeight="34.0" prefWidth="81.0" style="-fx-font-family: arial;" stylesheets="@style.css" text="Профиль" />
             <ImageView fitHeight="63.0" fitWidth="166.0" layoutX="358.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logo.png" />
                </image>
             </ImageView>
+            <Button fx:id="openAdminButton" layoutX="409.0" layoutY="74.0" mnemonicParsing="false" onAction="#openAdmin" prefHeight="34.0" prefWidth="81.0" style="-fx-font-family: arial;" stylesheets="@style.css" text="Админ" />
+            <Label fx:id="labelMenu" layoutX="161.0" layoutY="29.0" prefHeight="26.0" prefWidth="50.0" style="-fx-text-fill: rgb(55, 71, 79); -fx-font-size: 12pt; -fx-font-weight: bold;" stylesheets="@style.css" text="Меню" textAlignment="CENTER" />
          </children>
       </AnchorPane>
    </children>

@@ -18,16 +18,11 @@ public class User {
             ResultSet result = query.executeQuery();
             if(result.next()){
                 name = result.getString(1);
-                System.out.println(name);
                 mail = result.getString(2);
-                System.out.println(mail);
                 roleId = result.getInt(3);
-                System.out.println(roleId);
-            }else{
-                System.out.println("#");
             }
         } catch (SQLException e) {
-            System.out.println("User_Enter_Trouble");
+            System.out.println("User Enter Trouble");
             throw new RuntimeException(e);
         }
 

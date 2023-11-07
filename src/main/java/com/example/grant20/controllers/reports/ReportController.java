@@ -4,7 +4,6 @@ import com.example.grant20.HelloApplication;
 import com.example.grant20.controllers.MainController;
 import com.example.grant20.models.dataModel.EstimatedCost;
 import com.example.grant20.models.dataModel.EvaluationModel;
-import com.example.grant20.models.dataModel.Report;
 import com.example.grant20.models.dataModel.User;
 import com.example.grant20.models.DB.DBConnect;
 import com.example.grant20.models.DB.Query;
@@ -17,17 +16,13 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.layout.AnchorPane;
 
-import java.lang.reflect.Method;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
-import java.util.List;
 
 public class ReportController {
     User profile;
@@ -133,9 +128,7 @@ public class ReportController {
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 if(t1.isEmpty() || t1.equals("")){
                     filterHouse.setItems(getValuesFromList("houseNumber"));
-                    System.out.println("free");
-                }else {
-                    System.out.println("A");
+                } else {
                     filterHouse.setItems(getHouses(t1));
                 }
             }

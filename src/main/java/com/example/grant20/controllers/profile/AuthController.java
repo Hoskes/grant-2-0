@@ -45,17 +45,6 @@ public class AuthController {
     @FXML
     public void initialize() {
         Regex.addListenerFormatter(log, Regex.getCheckLog());
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        log.setText(Query.auth_log);
-        psw.setText(Query.auth_psw);
-        psw.setText(Query.auth_psw);
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////
     }
 
 
@@ -69,13 +58,10 @@ public class AuthController {
                         profile = new User(log.getText());
                         HelloApplication.changeMainPage("main.fxml", new MainController(profile));
                         MainController controller = HelloApplication.getLoader().getController();
-                        System.out.println(controller);
-                        System.out.println(controller.getClass());
                         controller.setProfile(profile);
                     }
                 } else {
-                    System.out.println("e");
-                    //добавить подсветку кнопки на 3 секунды
+                    System.out.println("Error");
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
