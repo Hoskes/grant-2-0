@@ -3,11 +3,10 @@ package com.example.grant20.models.DB;
 public class Query {
     public static final String checkAuth = "SELECT 1 FROM authentication JOIN employee USING(mail) WHERE mail=? AND password =? AND authentication.deleted IS NULL AND confirm = 1 AND employee.deleted IS NULL";
     public static final String createUser = "SELECT mail,name,role FROM employee WHERE mail=?";
-    public static final String auth_log = "test@mail.ru";
-    public static final String auth_psw = "Username1234!";
+
     public static final String registerUser = "INSERT INTO employee(mail,name,role)\n" +
-            "VALUES\n" +
-            "(?,?,2);\n";
+                                                                            "VALUES\n" +
+                                                                            "(?,?,2);\n";
     public static final String deleteComplexById = "UPDATE `complex` SET `deleted` = 1 WHERE id =?";
     public static final String deleteHouseById = "UPDATE `house` SET `deleted` = 1 WHERE id=?";
     public static final String deleteApartmentById = "UPDATE `apartment` SET `deleted` = 1 WHERE id=?";
@@ -21,13 +20,13 @@ public class Query {
                                                         "WHERE `mail`=?;";
     
     public static final String updateHouseById = "UPDATE `house` \n" +
-            "SET `number`=?,\n" +
-            "`addedValue`=?,\n" +
-            "`buildingCosts`=?,\n" +
-            "`complexID`=(SELECT id FROM complex WHERE street = ? AND name = ? AND `deleted` IS NULL) \n" +
-            "WHERE id=?;";
+                                                    "SET `number`=?,\n" +
+                                                    "`addedValue`=?,\n" +
+                                                    "`buildingCosts`=?,\n" +
+                                                    "`complexID`=(SELECT id FROM complex WHERE street = ? AND name = ? AND `deleted` IS NULL) \n" +
+                                                    "WHERE id=?;";
     public static final String registerAuthorizationData  = "INSERT INTO authentication(mail,password)\n" +
-            "VALUES (?,?);";
+                                                                "VALUES (?,?);";
     public static final String checkSoldApartmentsOnComplex = "SELECT IF(\"sold\"=ANY(SELECT statusSale FROM complex JOIN " +
             "house ON house.complexID=complex.id JOIN apartment ON apartment.houseID = house.id WHERE complexID = ? AND apartment.deleted IS NULL AND house.deleted IS NULL AND complex.deleted IS NULL),1,0)";
     public static final String selectHouseList = "SELECT house.id, complex.name, complex.street, IF(house.number IS NULL OR " +
@@ -51,13 +50,13 @@ public class Query {
             "(`name`, `city`, `street`, `statusConstruction`, `addedValue`, `buildingCosts`) VALUES \n" +
             "(?,?,?,?,?,?);";
     public static final String updateComplex = "UPDATE `complex` SET \n" +
-            "`name`=?,\n" +
-            "`city`=?,\n" +
-            "`street`=?,\n" +
-            "`statusConstruction`=?,\n" +
-            "`addedValue`=?,\n" +
-            "`buildingCosts`=? \n" +
-            "WHERE id=?;";
+                                                    "`name`=?,\n" +
+                                                    "`city`=?,\n" +
+                                                    "`street`=?,\n" +
+                                                    "`statusConstruction`=?,\n" +
+                                                    "`addedValue`=?,\n" +
+                                                    "`buildingCosts`=? \n" +
+                                                    "WHERE id=?;";
     public static final String getComplexNames = "SELECT DISTINCT name,street FROM complex WHERE deleted IS NULL";
     public static final String getStreetNamesWhereComplex = "SELECT DISTINCT name,street FROM complex WHERE name=?";
     public static final String updateApartmentById = "UPDATE `apartment`\n" +

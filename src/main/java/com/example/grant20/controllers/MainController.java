@@ -37,10 +37,6 @@ public class MainController{
 
     @FXML
     private Label labelFioAuthorizedPerson;
-    @FXML
-    void setUserName(User user) {
-        labelFioAuthorizedPerson.setText(labelFioAuthorizedPerson.getText()+"\n"+user.getName());
-    }
 
     @FXML
     private Button openAdminButton;
@@ -48,6 +44,11 @@ public class MainController{
 
     @FXML
     private Button reportButton;
+
+    @FXML
+    void setUserName(User user) {
+        labelFioAuthorizedPerson.setText(labelFioAuthorizedPerson.getText()+"\n"+user.getName());
+    }
 
     @FXML
     void logOut(ActionEvent event) {

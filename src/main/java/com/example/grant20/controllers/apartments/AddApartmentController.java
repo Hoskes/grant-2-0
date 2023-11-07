@@ -5,7 +5,6 @@ import com.example.grant20.models.DB.DBConnect;
 import com.example.grant20.models.DB.Query;
 import com.example.grant20.models.MyAlert;
 import com.example.grant20.models.dataModel.Apartment;
-import com.example.grant20.models.dataModel.House;
 import com.example.grant20.models.features.Regex;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

@@ -26,7 +26,6 @@ public class PasswordHashing {
         }
     }
     public static void main(String[] args) {
-        //System.out.println(PasswordHashing.hashPassword("Username1234!"));
         boolean a = true;
         boolean b = 2>3;
         boolean c = a&b;

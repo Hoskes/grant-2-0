@@ -1,6 +1,5 @@
 package com.example.grant20.models.DB;
 
-import com.example.grant20.HelloApplication;
 import com.example.grant20.models.MyAlert;
 
 import java.sql.*;
