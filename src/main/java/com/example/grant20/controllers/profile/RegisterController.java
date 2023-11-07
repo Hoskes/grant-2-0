@@ -110,7 +110,6 @@ public class RegisterController {
         Regex.addListenerFormatter(enterI, Regex.getCheck_name());
         Regex.addListenerFormatter(enterO, Regex.getCheck_name());
         Regex.addListenerFormatter(enterPassword, Regex.getCheckPsw());
-        Regex.addListenerFormatter(repeatPassword, enterPassword.getText());
         Regex.addListenerFormatter(enterPhoneNumber, Regex.checkPhone);
     }
 }
