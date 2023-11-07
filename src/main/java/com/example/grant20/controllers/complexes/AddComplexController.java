@@ -117,7 +117,9 @@ public class AddComplexController {
             MyAlert alert = new MyAlert("Запись успешно изменена");
             HelloApplication.changeMainPage("complexes.fxml", toPage);
         }
-        MyAlert alert = new MyAlert("Ошибка в заполнении данных! Пожалуйства проверьте корректность заполненных вами значений");
+        else {
+            MyAlert alert = new MyAlert("Ошибка в заполнении данных! Пожалуйства проверьте корректность заполненных вами значений");
+        }
 
     }
 

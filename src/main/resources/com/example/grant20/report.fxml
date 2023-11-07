@@ -20,16 +20,16 @@
                         <Image url="@backBig.png" />
                     </image>
                 </ImageView>
-                <Label fx:id="coefLabel" layoutX="738.0" layoutY="84.0" text="Коэффициенты компании">
+                <Label fx:id="coefLabel" layoutX="801.0" layoutY="84.0" text="Коэффициенты компании">
                     <font>
                         <Font size="14.0" />
                     </font></Label>
-                <TextField fx:id="areaCost" layoutX="738.0" layoutY="145.0" prefHeight="26.0" prefWidth="272.0" />
-                <Label fx:id="coefLabel1" layoutX="738.0" layoutY="120.0" text="Стоимость 1 квадратного метра" />
-                <TextField fx:id="roomsCost" layoutX="738.0" layoutY="209.0" prefHeight="26.0" prefWidth="272.0" />
-                <Label fx:id="coefLabel2" layoutX="738.0" layoutY="184.0" text="Стоимость комнаты" />
-                <TextField fx:id="baseCost" layoutX="738.0" layoutY="269.0" prefHeight="26.0" prefWidth="272.0" />
-                <Label fx:id="coefLabel3" layoutX="738.0" layoutY="244.0" text="Добавочная базовая стоимость" />
+                <TextField fx:id="areaCost" layoutX="801.0" layoutY="145.0" prefHeight="26.0" prefWidth="272.0" />
+                <Label fx:id="coefLabel1" layoutX="801.0" layoutY="120.0" text="Стоимость 1 квадратного метра" />
+                <TextField fx:id="roomsCost" layoutX="801.0" layoutY="209.0" prefHeight="26.0" prefWidth="272.0" />
+                <Label fx:id="coefLabel2" layoutX="801.0" layoutY="184.0" text="Стоимость комнаты" />
+                <TextField fx:id="baseCost" layoutX="801.0" layoutY="269.0" prefHeight="26.0" prefWidth="272.0" />
+                <Label fx:id="coefLabel3" layoutX="801.0" layoutY="244.0" text="Добавочная базовая стоимость" />
                 <Label fx:id="finalLabel1" layoutX="585.0" layoutY="431.0" text="Сумма оценочных стоимостей" />
                 <Label fx:id="labelComplexesFilter" layoutX="165.0" layoutY="430.0" text="Фильтр по ЖК" />
                 <Label fx:id="labelHousesFilter" layoutX="165.0" layoutY="490.0" text="Выборка по дому" />
@@ -49,12 +49,12 @@
                 </ImageView>
             <ChoiceBox fx:id="filterComplex" layoutX="165.0" layoutY="453.0" prefHeight="27.0" prefWidth="202.0" />
             <ChoiceBox fx:id="filterHouse" layoutX="165.0" layoutY="518.0" prefHeight="27.0" prefWidth="201.0" />
-            <Text layoutX="738.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="При неккоректно введенном значении будет применен стандартный коэфициент" wrappingWidth="272.0000000000002">
+            <Text layoutX="801.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="При неккоректно введенном значении будет применен стандартный коэфициент" wrappingWidth="272.0000000000002">
                <font>
                   <Font size="10.0" />
                </font>
             </Text>
-            <Text layoutX="541.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Отчет">
+            <Text layoutX="541.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Отчет">
                <font>
                   <Font size="24.0" />
                </font>
