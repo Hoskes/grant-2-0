@@ -2,6 +2,7 @@ package com.example.grant20.controllers.profile;
 
 import com.example.grant20.HelloApplication;
 import com.example.grant20.controllers.MainController;
+import com.example.grant20.models.MyAlert;
 import com.example.grant20.models.dataModel.User;
 import com.example.grant20.models.DB.DBConnect;
 import com.example.grant20.models.features.PasswordHashing;
@@ -61,7 +62,8 @@ public class AuthController {
                         controller.setProfile(profile);
                     }
                 } else {
-                    System.out.println("Error");
+                    MyAlert alert = new MyAlert("Данные для входа некорректны.");
+                    System.out.println("Auth Error");
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
