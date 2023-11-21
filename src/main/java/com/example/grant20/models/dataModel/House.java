@@ -9,20 +9,20 @@ public class House {
     String street;
     String number;
     String status;
-    int count_sold;
-    int count_not_sold;
+    int countSold;
+    int countNotSold;
     String addedValue;
     String buildingCost;
 
 
-    public House(int id, String complexName, String street, String number, String status, int count_sold, int count_not_sold) {
+    public House(int id, String complexName, String street, String number, String status, int countSold, int countNotSold) {
         this.id = id;
         this.number = number;
         this.complexName = complexName;
         this.street = street;
         this.status = status;
-        this.count_sold = count_sold;
-        this.count_not_sold = count_not_sold;
+        this.countSold = countSold;
+        this.countNotSold = countNotSold;
     }
     public House(ResultSet resultSet) {
         try {
@@ -31,8 +31,8 @@ public class House {
             this.street = resultSet.getString(3);
             this.number = resultSet.getString(4);
             this.status = resultSet.getString(5);
-            this.count_sold = resultSet.getInt(6);
-            this.count_not_sold = resultSet.getInt(7);
+            this.countSold = resultSet.getInt(6);
+            this.countNotSold = resultSet.getInt(7);
             this.addedValue = resultSet.getString(8);
             this.buildingCost = resultSet.getString(9);
         } catch (SQLException e) {
@@ -83,20 +83,20 @@ public class House {
         this.street = street;
     }
 
-    public int getCount_sold() {
-        return count_sold;
+    public int getCountSold() {
+        return countSold;
     }
 
-    public void setCount_sold(int count_sold) {
-        this.count_sold = count_sold;
+    public void setCountSold(int countSold) {
+        this.countSold = countSold;
     }
 
-    public int getCount_not_sold() {
-        return count_not_sold;
+    public int getCountNotSold() {
+        return countNotSold;
     }
 
-    public void setCount_not_sold(int count_not_sold) {
-        this.count_not_sold = count_not_sold;
+    public void setCountNotSold(int countNotSold) {
+        this.countNotSold = countNotSold;
     }
 
     public String getAddedValue() {

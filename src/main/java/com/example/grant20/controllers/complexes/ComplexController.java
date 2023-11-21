@@ -61,14 +61,19 @@ public class ComplexController {
 
     @FXML
     void delete(ActionEvent event) {
-        MyAlert alert = new MyAlert("Вы действительно хотите удалить запись №" + table.getSelectionModel().getSelectedItem().getId() + "?");
-        if (alert.getAlert() == ButtonType.YES) {
-            Complex deletedItem = table.getSelectionModel().getSelectedItem();
-            //изменение типа списка для удаления объекта
-            ArrayList<Complex> bufList = new ArrayList<>(table.getItems().stream().toList());
-            bufList.remove(deletedItem);
-            table.setItems(FXCollections.observableArrayList(bufList));
-            DBConnect.executePreparedModificationQuery(Query.deleteComplexById, new ArrayList(Arrays.asList(deletedItem.getId() + "")));
+
+        if (table.getSelectionModel().getSelectedItem() != null) {
+            MyAlert alert = new MyAlert("Вы действительно хотите удалить запись №" + table.getSelectionModel().getSelectedItem().getId() + "?");
+            if (alert.getAlert() == ButtonType.YES) {
+                Complex deletedItem = table.getSelectionModel().getSelectedItem();
+                //изменение типа списка для удаления объекта
+                ArrayList<Complex> bufList = new ArrayList<>(table.getItems().stream().toList());
+                bufList.remove(deletedItem);
+                table.setItems(FXCollections.observableArrayList(bufList));
+                DBConnect.executePreparedModificationQuery(Query.deleteComplexById, new ArrayList(Arrays.asList(deletedItem.getId() + "")));
+            }
+        }else{
+            MyAlert alert1 = new MyAlert("Объект для удаления не выбран.");
         }
     }
 

@@ -1,7 +1,8 @@
 package com.example.grant20.models.DB;
 
 public class Query {
-    public static final String checkAuth = "SELECT 1 FROM authentication JOIN employee USING(mail) WHERE mail=? AND password =? AND authentication.deleted IS NULL AND confirm = 1 AND employee.deleted IS NULL";
+    public static final String checkAuth = "SELECT 1 FROM authentication JOIN employee USING(mail) WHERE mail=? " +
+            "AND password =? AND authentication.deleted IS NULL AND confirm = 1 AND employee.deleted IS NULL";
     public static final String createUser = "SELECT mail,name,role FROM employee WHERE mail=?";
 
     public static final String registerUser = "INSERT INTO employee(mail,name,role)\n" +

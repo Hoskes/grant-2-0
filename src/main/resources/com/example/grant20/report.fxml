@@ -34,14 +34,14 @@
                 <Label fx:id="labelComplexesFilter" layoutX="165.0" layoutY="430.0" text="Фильтр по ЖК" />
                 <Label fx:id="labelHousesFilter" layoutX="165.0" layoutY="490.0" text="Выборка по дому" />
                 <Label fx:id="summEstimatedCost" layoutX="585.0" layoutY="455.0" style="-fx-text-fill: green; -fx-font-weight: bold;" text="Сумма 1" />
-                <Label fx:id="finalLabel2" layoutX="585.0" layoutY="483.0" prefHeight="18.0" prefWidth="306.0" text="Сумма оценочных стоимостей непроданных квартир" />
+                <Label fx:id="finalLabel2" layoutX="585.0" layoutY="536.0" prefHeight="18.0" prefWidth="306.0" text="Сумма оценочных стоимостей непроданных квартир" />
                 <Label fx:id="summEstimatedCostNotSold" layoutX="585.0" layoutY="507.0" style="-fx-text-fill: green; -fx-font-weight: bold;" text="Сумма 2" />
-                <Label fx:id="finalLabel3" layoutX="585.0" layoutY="537.0" prefHeight="18.0" prefWidth="306.0" text="Сумма оценочных стоимостей проданных квартир" />
+                <Label fx:id="finalLabel3" layoutX="585.0" layoutY="482.0" prefHeight="18.0" prefWidth="306.0" text="Сумма оценочных стоимостей проданных квартир" />
                 <Label fx:id="summEstimatedCostSold" layoutX="585.0" layoutY="561.0" style="-fx-text-fill: green; -fx-font-weight: bold;" text="Сумма 3" />
-                <Label fx:id="finalLabel4" layoutX="904.0" layoutY="435.0" text="Сумма затрат на строительство" />
-                <Label fx:id="summConstructionCost" layoutX="904.0" layoutY="459.0" style="-fx-text-fill: green; -fx-font-weight: bold;" text="Сумма 4" />
-                <Label fx:id="finalLabel41" layoutX="904.0" layoutY="491.0" text="Прибыль компании" />
-                <Label fx:id="summCompanyIncome" layoutX="904.0" layoutY="515.0" style="-fx-text-fill: green; -fx-font-weight: bold;" text="Сумма 5" />
+                <Label fx:id="finalLabel4" layoutX="900.0" layoutY="430.0" text="Сумма затрат на строительство" />
+                <Label fx:id="summConstructionCost" layoutX="904.0" layoutY="455.0" style="-fx-text-fill: green; -fx-font-weight: bold;" text="Сумма 4" />
+                <Label fx:id="finalLabel41" layoutX="900.0" layoutY="483.0" text="Прибыль компании" />
+                <Label fx:id="summCompanyIncome" layoutX="904.0" layoutY="507.0" style="-fx-text-fill: green; -fx-font-weight: bold;" text="Сумма 5" />
                 <ImageView fitHeight="60" fitWidth="150" layoutX="1043.0" layoutY="598.0">
                     <image>
                         <Image url="@logo.png" />

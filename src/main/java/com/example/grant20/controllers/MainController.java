@@ -78,7 +78,9 @@ public class MainController{
 
     @FXML
     void openAdmin(ActionEvent event) {
-        HelloApplication.changeMainPage("admin.fxml",new AdminController(profile));
+        if (profile.getRoleId() == 1) {
+            HelloApplication.changeMainPage("admin.fxml",new AdminController(profile));
+        }
     }
 
     @FXML

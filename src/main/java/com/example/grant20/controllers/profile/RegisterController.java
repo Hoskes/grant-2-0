@@ -65,9 +65,9 @@ public class RegisterController {
 
     @FXML
     void confirmRegistrationSuccess(ActionEvent event) {
-        boolean isName = enterF.getText().matches(Regex.getCheck_name())
-                & enterI.getText().matches(Regex.getCheck_name())
-                & enterO.getText().matches(Regex.getCheck_name());
+        boolean isName = enterF.getText().matches(Regex.getCheckName())
+                & enterI.getText().matches(Regex.getCheckName())
+                & enterO.getText().matches(Regex.getCheckName());
         boolean isPassword = enterPassword.getText().matches(Regex.getCheckPsw())
                 & repeatPassword.getText().equals(enterPassword.getText());
         boolean isEmail = enterEmail.getText().matches(Regex.getCheckLog());
@@ -106,9 +106,9 @@ public class RegisterController {
     @FXML
     public void initialize() {
         Regex.addListenerFormatter(enterEmail, Regex.getCheckLog());
-        Regex.addListenerFormatter(enterF, Regex.getCheck_name());
-        Regex.addListenerFormatter(enterI, Regex.getCheck_name());
-        Regex.addListenerFormatter(enterO, Regex.getCheck_name());
+        Regex.addListenerFormatter(enterF, Regex.getCheckName());
+        Regex.addListenerFormatter(enterI, Regex.getCheckName());
+        Regex.addListenerFormatter(enterO, Regex.getCheckName());
         Regex.addListenerFormatter(enterPassword, Regex.getCheckPsw());
         Regex.addListenerFormatter(enterPhoneNumber, Regex.checkPhone);
     }

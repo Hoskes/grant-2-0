@@ -9,6 +9,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="691.0" stylesheets="@withTables.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -19,22 +21,27 @@
                   <Image url="@background.jpg" />
                </image>
             </ImageView>
-            <ChoiceBox fx:id="chooseStatus" layoutX="47.0" layoutY="121.0" prefHeight="26.0" prefWidth="318.0" />
-            <TextField fx:id="enterName" layoutX="47.0" layoutY="58.0" prefHeight="26.0" prefWidth="318.0" />
-            <Label fx:id="numberLabel" layoutX="46.0" layoutY="33.0" text="Название комплекса" />
-            <Label fx:id="statusLabel" layoutX="46.0" layoutY="99.0" text="Статус" />
-            <TextField fx:id="enterAddedValue" layoutX="47.0" layoutY="185.0" prefHeight="26.0" prefWidth="318.0" />
-            <Label fx:id="addedValueLabel" layoutX="47.0" layoutY="160.0" prefHeight="18.0" prefWidth="158.0" text="Добавочная стоимость" />
-            <TextField fx:id="enterBuildingCost" layoutX="47.0" layoutY="249.0" prefHeight="26.0" prefWidth="318.0" />
-            <Label fx:id="buildingCostLabel" layoutX="47.0" layoutY="224.0" prefHeight="18.0" prefWidth="178.0" text="Стоимость постройки" />
-            <Label fx:id="cityLabel" layoutX="47.0" layoutY="285.0" prefHeight="18.0" prefWidth="69.0" text="Город" />
-            <Button fx:id="saveChangesButton" layoutX="290.0" layoutY="476.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="26.0" prefWidth="115.0" text="Сохранить" />
-            <Button fx:id="goBackButton" layoutX="26.0" layoutY="468.0" mnemonicParsing="false" onAction="#goToComplexesPage" prefHeight="46.0" prefWidth="122.0" text="Назад" />
-            <TextField fx:id="enterCity" layoutX="46.0" layoutY="311.0" prefHeight="26.0" prefWidth="318.0" />
-            <Label fx:id="streetLabel" layoutX="48.0" layoutY="355.0" prefHeight="18.0" prefWidth="69.0" text="Улица" />
-            <TextField fx:id="enterStreet" layoutX="46.0" layoutY="375.0" prefHeight="26.0" prefWidth="318.0" />
-            <Label fx:id="housesLabel" layoutX="405.0" layoutY="33.0" text="Дома в ЖК" />
-            <Rectangle fx:id="tablePlace" arcHeight="5.0" arcWidth="5.0" fill="#d4f8ffe9" height="341.0" layoutX="405.0" layoutY="60.0" stroke="TRANSPARENT" strokeType="INSIDE" width="254.0" />
+            <ChoiceBox fx:id="chooseStatus" layoutX="40.0" layoutY="157.0" prefHeight="26.0" prefWidth="318.0" />
+            <TextField fx:id="enterName" layoutX="40.0" layoutY="94.0" prefHeight="26.0" prefWidth="318.0" />
+            <Label fx:id="numberLabel" layoutX="39.0" layoutY="69.0" text="Название комплекса" />
+            <Label fx:id="statusLabel" layoutX="39.0" layoutY="135.0" text="Статус" />
+            <TextField fx:id="enterAddedValue" layoutX="40.0" layoutY="221.0" prefHeight="26.0" prefWidth="318.0" />
+            <Label fx:id="addedValueLabel" layoutX="40.0" layoutY="196.0" prefHeight="18.0" prefWidth="158.0" text="Добавочная стоимость" />
+            <TextField fx:id="enterBuildingCost" layoutX="40.0" layoutY="285.0" prefHeight="26.0" prefWidth="318.0" />
+            <Label fx:id="buildingCostLabel" layoutX="40.0" layoutY="260.0" prefHeight="18.0" prefWidth="178.0" text="Стоимость постройки" />
+            <Label fx:id="cityLabel" layoutX="40.0" layoutY="321.0" prefHeight="18.0" prefWidth="69.0" text="Город" />
+            <Button fx:id="saveChangesButton" layoutX="283.0" layoutY="468.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="46.0" prefWidth="148.0" text="Сохранить" />
+            <Button fx:id="goBackButton" layoutX="41.0" layoutY="468.0" mnemonicParsing="false" onAction="#goToComplexesPage" prefHeight="46.0" prefWidth="122.0" text="Назад" />
+            <TextField fx:id="enterCity" layoutX="39.0" layoutY="347.0" prefHeight="26.0" prefWidth="318.0" />
+            <Label fx:id="streetLabel" layoutX="41.0" layoutY="391.0" prefHeight="18.0" prefWidth="69.0" text="Улица" />
+            <TextField fx:id="enterStreet" layoutX="39.0" layoutY="411.0" prefHeight="26.0" prefWidth="318.0" />
+            <Label fx:id="housesLabel" layoutX="398.0" layoutY="69.0" text="Дома в ЖК" />
+            <Rectangle fx:id="tablePlace" arcHeight="5.0" arcWidth="5.0" fill="#d4f8ffe9" height="341.0" layoutX="398.0" layoutY="96.0" stroke="TRANSPARENT" strokeType="INSIDE" width="254.0" />
+            <Text layoutX="247.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Добавить/изменить комплекс">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </children>

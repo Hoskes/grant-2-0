@@ -60,14 +60,19 @@ public class AuthController {
                         HelloApplication.changeMainPage("main.fxml", new MainController(profile));
                         MainController controller = HelloApplication.getLoader().getController();
                         controller.setProfile(profile);
+                    }else {
+                        MyAlert alert = new MyAlert("Данные для входа некорректны.");
                     }
                 } else {
                     MyAlert alert = new MyAlert("Данные для входа некорректны.");
                     System.out.println("Auth Error");
                 }
             } catch (SQLException e) {
+                MyAlert alert = new MyAlert("Ошибка при обращении к базе данных.");
                 throw new RuntimeException(e);
             }
+        }else {
+            MyAlert alert = new MyAlert("Данные для входа некорректны.");
         }
     }
 

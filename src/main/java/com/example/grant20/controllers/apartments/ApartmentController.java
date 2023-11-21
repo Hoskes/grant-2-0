@@ -97,6 +97,8 @@ public class ApartmentController {
                 table.setItems(FXCollections.observableArrayList(bufList));
                 DBConnect.executePreparedModificationQuery(Query.deleteApartmentById, new ArrayList(Arrays.asList(selected.getId() + "")));
             }
+        }else {
+            MyAlert alert = new MyAlert("Элемент для удаления не выбран.");
         }
     }
     @FXML

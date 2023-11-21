@@ -65,13 +65,17 @@ public class HouseController {
 
     @FXML
     void deleteHouse(ActionEvent event) {
-        MyAlert alert = new MyAlert("Вы действительно хотите удалить запись №" + table.getSelectionModel().getSelectedItem().getId() + "?");
-        if (alert.getAlert() == ButtonType.YES) {
-            House deletedItem = table.getSelectionModel().getSelectedItem();
-            ArrayList<House> bufList = new ArrayList<>(table.getItems().stream().toList());
-            bufList.remove(deletedItem);
-            table.setItems(FXCollections.observableArrayList(bufList));
-            DBConnect.executePreparedModificationQuery(Query.deleteHouseById, new ArrayList(Arrays.asList(deletedItem.getId() + "")));
+        if (table.getSelectionModel().getSelectedItem() != null) {
+            MyAlert alert = new MyAlert("Вы действительно хотите удалить запись №" + table.getSelectionModel().getSelectedItem().getId() + "?");
+            if (alert.getAlert() == ButtonType.YES) {
+                House deletedItem = table.getSelectionModel().getSelectedItem();
+                ArrayList<House> bufList = new ArrayList<>(table.getItems().stream().toList());
+                bufList.remove(deletedItem);
+                table.setItems(FXCollections.observableArrayList(bufList));
+                DBConnect.executePreparedModificationQuery(Query.deleteHouseById, new ArrayList(Arrays.asList(deletedItem.getId() + "")));
+            }
+        }else{
+            MyAlert alert = new MyAlert("Объект для удаления не выбран.");
         }
     }
 
